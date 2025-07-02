@@ -7,8 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { adaptiveProjects, FINANCING_SOURCES, TECHNICAL_PARTNERS } from "@/data/adaptiveProjects";
-import { SECTORS, Sector } from "@/types/climate";
+import { adaptiveProjects } from "@/data/adaptiveProjects";
+import { SECTORS, Sector, FINANCING_SOURCES, TECHNICAL_PARTNERS } from "@/types/climate";
 import { formatCurrency } from "@/utils/climateCalculations";
 import { 
   Search, BookOpen, TrendingUp, Shield, Heart, 
