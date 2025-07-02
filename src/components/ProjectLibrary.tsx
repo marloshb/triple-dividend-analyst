@@ -50,9 +50,12 @@ export function ProjectLibrary() {
       "Agricultura e Recursos Hídricos": Leaf,
       "Florestas e Ecossistemas": Leaf,
       "Infraestrutura e Urbanismo": Building,
-      "Saúde e Bem Estar": Heart,
+      "Saneamento e Saúde Pública": Heart,
       "Infraestrutura de Energia": Zap,
       "Transportes Resilientes": Target,
+      "Ambiente Social e Educação": Users,
+      "Engenharia Costeira e Pesca": Globe,
+      "Saúde e Bem Estar": Heart,
       "Governança e Finanças Climáticas": DollarSign
     };
     return icons[sector] || Globe;

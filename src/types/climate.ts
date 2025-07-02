@@ -127,16 +127,16 @@ export interface AdaptiveProjectTemplate {
 }
 
 export const SECTORS = [
-  'Agricultura e Recursos Hídricos',
-  'Florestas e Ecossistemas',
-  'Infraestrutura e Urbanismo',
-  'Saneamento e Saúde Pública',
-  'Infraestrutura de Energia',
-  'Transportes Resilientes',
-  'Ambiente Social e Educação',
-  'Engenharia Costeira e Pesca',
-  'Saúde e Bem Estar',
-  'Governança e Finanças Climáticas'
+  "Agricultura e Recursos Hídricos",
+  "Florestas e Ecossistemas", 
+  "Infraestrutura e Urbanismo",
+  "Saneamento e Saúde Pública",
+  "Infraestrutura de Energia",
+  "Transportes Resilientes", 
+  "Ambiente Social e Educação",
+  "Engenharia Costeira e Pesca",
+  "Saúde e Bem Estar",
+  "Governança e Finanças Climáticas"
 ] as const;
 
 export type Sector = typeof SECTORS[number];
