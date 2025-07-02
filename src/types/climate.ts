@@ -1,3 +1,4 @@
+
 export interface ClimateProject {
   id: string;
   name: string;
@@ -40,6 +41,51 @@ export interface DividendCalculation {
   annualReturn: number;
 }
 
+export interface FinancingSource {
+  name: string;
+  type: 'público' | 'privado' | 'multilateral' | 'cooperativo' | 'filantrópico';
+  focus: string[];
+  typical_amount: {
+    min: number;
+    max: number;
+  };
+  requirements: string[];
+  contact_info?: string;
+}
+
+export interface TechnicalPartner {
+  name: string;
+  type: 'universidade' | 'instituto_pesquisa' | 'ong' | 'empresa_consultoria' | 'organismo_internacional';
+  expertise: string[];
+  location: string;
+  previous_projects?: string[];
+}
+
+export interface EconomicAnalysis {
+  implementation_cost: {
+    total: number;
+    breakdown: {
+      equipment: number;
+      installation: number;
+      training: number;
+      monitoring: number;
+    };
+  };
+  operational_cost_annual: number;
+  revenue_potential: {
+    direct: number;
+    indirect: number;
+    co_benefits: number;
+  };
+  payback_period: number; // anos
+  net_present_value: number;
+  scalability: {
+    potential: 'baixo' | 'médio' | 'alto';
+    barriers: string[];
+    enablers: string[];
+  };
+}
+
 export interface AdaptiveProjectTemplate {
   id: string;
   name: string;
@@ -62,6 +108,22 @@ export interface AdaptiveProjectTemplate {
   riskReduction: number; // percentage
   economicMultiplier: number;
   socialImpact: number;
+  
+  // Novas propriedades para análise completa
+  economicAnalysis?: EconomicAnalysis;
+  financingSources?: FinancingSource[];
+  technicalPartners?: TechnicalPartner[];
+  
+  // Métricas adicionais
+  co2_reduction?: number; // toneladas CO2 eq/ano
+  jobs_created?: number;
+  people_benefited?: number;
+  success_cases?: {
+    location: string;
+    year: number;
+    results: string;
+    lessons_learned: string;
+  }[];
 }
 
 export const SECTORS = [
@@ -78,3 +140,85 @@ export const SECTORS = [
 ] as const;
 
 export type Sector = typeof SECTORS[number];
+
+// Dados de financiamento e parceiros técnicos por setor
+export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
+  "Agricultura e Recursos Hídricos": [
+    {
+      name: "PRONAF - Programa Nacional de Fortalecimento da Agricultura Familiar",
+      type: "público",
+      focus: ["agricultura familiar", "irrigação", "sustentabilidade"],
+      typical_amount: { min: 50000, max: 500000 },
+      requirements: ["DAP válida", "projeto técnico", "licenças ambientais"],
+      contact_info: "Banco do Brasil, Caixa Econômica Federal"
+    },
+    {
+      name: "Banco Mundial - Climate Investment Funds",
+      type: "multilateral",
+      focus: ["adaptação climática", "agricultura resiliente", "recursos hídricos"],
+      typical_amount: { min: 1000000, max: 50000000 },
+      requirements: ["projeto nacional", "co-financiamento", "impacto demonstrável"]
+    },
+    {
+      name: "CAF - Banco de Desenvolvimento da América Latina",
+      type: "multilateral",
+      focus: ["infraestrutura verde", "segurança hídrica", "adaptação"],
+      typical_amount: { min: 500000, max: 20000000 },
+      requirements: ["viabilidade técnica", "sustentabilidade financeira", "impacto regional"]
+    }
+  ],
+  "Florestas e Ecossistemas": [
+    {
+      name: "Fundo Amazônia",
+      type: "público",
+      focus: ["conservação florestal", "uso sustentável", "restauração"],
+      typical_amount: { min: 100000, max: 10000000 },
+      requirements: ["projeto na Amazônia Legal", "impacto ambiental positivo", "participação social"]
+    },
+    {
+      name: "Conservação Internacional",
+      type: "filantrópico",
+      focus: ["biodiversidade", "serviços ecossistêmicos", "comunidades"],
+      typical_amount: { min: 50000, max: 2000000 },
+      requirements: ["conservação comprovada", "envolvimento comunitário", "monitoramento"]
+    }
+  ]
+};
+
+export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
+  "Agricultura e Recursos Hídricos": [
+    {
+      name: "EMBRAPA",
+      type: "instituto_pesquisa",
+      expertise: ["agricultura tropical", "recursos hídricos", "tecnologia agrícola"],
+      location: "Brasil (nacional)",
+      previous_projects: ["Sistema Plantio Direto", "Integração Lavoura-Pecuária-Floresta"]
+    },
+    {
+      name: "CIAT - Centro Internacional de Agricultura Tropical",
+      type: "organismo_internacional",
+      expertise: ["agricultura climática", "segurança alimentar", "sistemas resilientes"],
+      location: "Colômbia (atuação América Latina)"
+    },
+    {
+      name: "World Agroforestry Centre (ICRAF)",
+      type: "organismo_internacional",
+      expertise: ["agrofloresta", "restauração", "adaptação climática"],
+      location: "Quênia (atuação global)"
+    }
+  ],
+  "Florestas e Ecossistemas": [
+    {
+      name: "Instituto Nacional de Pesquisas da Amazônia (INPA)",
+      type: "instituto_pesquisa",
+      expertise: ["ecologia tropical", "restauração florestal", "biodiversidade"],
+      location: "Manaus, Brasil"
+    },
+    {
+      name: "WRI Brasil",
+      type: "ong",
+      expertise: ["restauração florestal", "políticas ambientais", "mudanças climáticas"],
+      location: "Brasil"
+    }
+  ]
+};
