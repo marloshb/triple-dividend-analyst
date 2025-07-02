@@ -2,41 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Design system para Triple Dividend Climate Adaptation Platform
+Cores inspiradas em sustentabilidade, natureza e crescimento econômico.
+Todas as cores em HSL para máxima flexibilidade.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 155 45% 98%;
+    --foreground: 155 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 155 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 155 20% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Verde sustentável como cor primária */
+    --primary: 155 65% 35%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 155 65% 30%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Tons de terra para secundário */
+    --secondary: 45 35% 88%;
+    --secondary-foreground: 155 20% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 155 25% 95%;
+    --muted-foreground: 155 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Azul oceano para accent */
+    --accent: 205 80% 92%;
+    --accent-foreground: 205 85% 25%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 155 25% 88%;
+    --input: 155 25% 88%;
+    --ring: 155 65% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Cores específicas para clima e sustentabilidade */
+    --success: 125 65% 45%;
+    --success-foreground: 0 0% 98%;
+    --warning: 45 95% 55%;
+    --warning-foreground: 45 25% 15%;
+    --info: 205 85% 55%;
+    --info-foreground: 0 0% 98%;
+
+    /* Gradientes para impacto visual */
+    --gradient-primary: linear-gradient(135deg, hsl(155 65% 35%), hsl(125 65% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(205 80% 92%), hsl(45 35% 88%));
+    --gradient-hero: linear-gradient(135deg, hsl(155 65% 35%), hsl(205 85% 55%));
+
+    /* Sombras para elementos importantes */
+    --shadow-climate: 0 10px 30px -10px hsl(155 65% 35% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(155 25% 50% / 0.1);
+
+    /* Animações fluidas */
+    --transition-climate: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
