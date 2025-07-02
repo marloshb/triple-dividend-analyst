@@ -269,56 +269,265 @@ export const adaptiveProjects: Record<Sector, AdaptiveProjectTemplate[]> = {
   ],
 
   "Florestas e Ecossistemas": [
+    // 🌱 A. Restauração e Reflorestamento (1-80)
     {
       id: "flo-001",
-      name: "Restauração de mata ciliar",
+      name: "Reflorestamento de áreas degradadas",
       sector: "Florestas e Ecossistemas",
-      category: "Restauração Florestal",
-      description: "Replantio de vegetação nativa nas margens de rios e córregos para proteção hídrica",
-      typicalInvestment: { min: 60000, max: 400000 },
+      category: "Restauração e Reflorestamento",
+      description: "Plantio de espécies nativas para recuperação de áreas degradadas com foco em biodiversidade",
+      typicalInvestment: { min: 120000, max: 800000 },
       expectedBenefits: {
-        first: ["Controle de erosão", "Redução de enchentes", "Proteção da qualidade da água"],
-        second: ["Aumento do valor da propriedade", "Oportunidades de ecoturismo", "Mercado de carbono"],
-        third: ["Conservação da biodiversidade", "Melhoria da qualidade da água", "Benefícios paisagísticos"]
+        first: ["Controle de erosão completo", "Redução de 70% nos riscos de deslizamento", "Estabilização do microclima"],
+        second: ["Créditos de carbono R$ 50/ton/ano", "Ecoturismo com potencial de R$ 80k/ano", "Valorização de 30% das propriedades"],
+        third: ["Habitat para 200+ espécies", "Sequestro de 15 ton CO2/ha/ano", "Educação ambiental comunitária"]
       },
-      implementationTime: { min: 12, max: 36 },
-      riskReduction: 65,
-      economicMultiplier: 3.8,
-      socialImpact: 4.4
+      implementationTime: { min: 18, max: 60 },
+      riskReduction: 75,
+      economicMultiplier: 4.2,
+      socialImpact: 4.8
     },
     {
       id: "flo-002",
-      name: "Reflorestamento de encostas",
+      name: "Plantio de espécies nativas em encostas",
       sector: "Florestas e Ecossistemas",
-      category: "Controle de Erosão",
-      description: "Plantio de espécies nativas em áreas declivosas para estabilização do solo",
+      category: "Restauração e Reflorestamento",
+      description: "Reflorestamento específico para encostas com espécies de alta fixação de solo",
       typicalInvestment: { min: 80000, max: 500000 },
       expectedBenefits: {
-        first: ["Prevenção de deslizamentos", "Controle de erosão", "Proteção de infraestrutura"],
-        second: ["Exploração sustentável de madeira", "Turismo ecológico", "Serviços ambientais"],
-        third: ["Habitat para fauna", "Regulação climática", "Qualidade do ar"]
+        first: ["Prevenção de 95% dos deslizamentos", "Proteção de infraestrutura abaixo", "Controle de enchentes"],
+        second: ["Economia de R$ 2M em obras preventivas", "Turismo ecológico", "Exploração sustentável"],
+        third: ["Proteção de 500+ famílias", "Corredor para fauna", "Microclima estabilizado"]
       },
-      implementationTime: { min: 18, max: 48 },
-      riskReduction: 75,
-      economicMultiplier: 4.1,
-      socialImpact: 4.2
+      implementationTime: { min: 12, max: 48 },
+      riskReduction: 85,
+      economicMultiplier: 5.1,
+      socialImpact: 4.7
     },
     {
       id: "flo-003",
-      name: "Corredores ecológicos",
+      name: "Reflorestamento de APPs",
       sector: "Florestas e Ecossistemas",
-      category: "Conectividade",
-      description: "Conexão entre fragmentos florestais para facilitar fluxo genético",
-      typicalInvestment: { min: 120000, max: 1000000 },
+      category: "Restauração e Reflorestamento",
+      description: "Recuperação de Áreas de Preservação Permanente com espécies nativas regionais",
+      typicalInvestment: { min: 100000, max: 600000 },
       expectedBenefits: {
-        first: ["Redução de riscos ambientais", "Estabilização do clima local", "Proteção contra desastres"],
-        second: ["Desenvolvimento do ecoturismo", "Valorização imobiliária", "Mercados ambientais"],
-        third: ["Conservação da fauna", "Serviços ecossistêmicos", "Educação ambiental"]
+        first: ["Conformidade legal completa", "Proteção hídrica garantida", "Redução de multas ambientais"],
+        second: ["Certificações ambientais", "Acesso a linhas de crédito verde", "Valorização imobiliária"],
+        third: ["Qualidade da água melhorada", "Biodiversidade restaurada", "Serviços ecossistêmicos"]
       },
-      implementationTime: { min: 24, max: 60 },
-      riskReduction: 50,
-      economicMultiplier: 3.6,
+      implementationTime: { min: 24, max: 72 },
+      riskReduction: 70,
+      economicMultiplier: 3.8,
+      socialImpact: 4.6
+    },
+    {
+      id: "flo-004",
+      name: "Reflorestamento de nascentes",
+      sector: "Florestas e Ecossistemas",
+      category: "Restauração e Reflorestamento",
+      description: "Proteção e recuperação de nascentes através de reflorestamento dirigido",
+      typicalInvestment: { min: 60000, max: 300000 },
+      expectedBenefits: {
+        first: ["Garantia hídrica permanente", "Qualidade da água protegida", "Vazão aumentada em 40%"],
+        second: ["Economia em tratamento de água", "Abastecimento rural sustentável", "Turismo de nascentes"],
+        third: ["Segurança hídrica comunitária", "Patrimônio natural preservado", "Educação sobre recursos hídricos"]
+      },
+      implementationTime: { min: 18, max: 48 },
+      riskReduction: 80,
+      economicMultiplier: 4.5,
+      socialImpact: 4.9
+    },
+    {
+      id: "flo-005",
+      name: "Corredores ecológicos entre fragmentos",
+      sector: "Florestas e Ecossistemas",
+      category: "Restauração e Reflorestamento",
+      description: "Conexão de fragmentos florestais através de corredores de vegetação nativa",
+      typicalInvestment: { min: 200000, max: 1500000 },
+      expectedBenefits: {
+        first: ["Conectividade de habitat restaurada", "Redução de 60% na perda de biodiversidade", "Estabilidade genética"],
+        second: ["Mercado de carbono potencializado", "Turismo ecológico integrado", "Pesquisa científica"],
+        third: ["Fluxo gênico restaurado", "Polinização melhorada", "Resiliência climática aumentada"]
+      },
+      implementationTime: { min: 36, max: 120 },
+      riskReduction: 65,
+      economicMultiplier: 3.9,
+      socialImpact: 4.4
+    },
+
+    // 🌿 B. Proteção e Conservação (81-160)
+    {
+      id: "flo-081",
+      name: "Criação de unidades de conservação municipais",
+      sector: "Florestas e Ecossistemas",
+      category: "Proteção e Conservação",
+      description: "Estabelecimento de UCs municipais para proteção de ecossistemas locais",
+      typicalInvestment: { min: 500000, max: 5000000 },
+      expectedBenefits: {
+        first: ["Proteção legal permanente", "Prevenção de 100% do desmatamento", "Controle de ocupação irregular"],
+        second: ["Ecoturismo estruturado", "Pesquisa científica", "Fundos ambientais internacionais"],
+        third: ["Patrimônio natural municipal", "Educação ambiental", "Qualidade de vida urbana"]
+      },
+      implementationTime: { min: 24, max: 72 },
+      riskReduction: 90,
+      economicMultiplier: 4.6,
       socialImpact: 4.8
+    },
+    {
+      id: "flo-082",
+      name: "Implementação de APPs protegidas",
+      sector: "Florestas e Ecossistemas",
+      category: "Proteção e Conservação",
+      description: "Demarcação e proteção efetiva de Áreas de Preservação Permanente",
+      typicalInvestment: { min: 150000, max: 800000 },
+      expectedBenefits: {
+        first: ["Conformidade legal total", "Proteção hídrica efetiva", "Prevenção de erosão"],
+        second: ["Certificações ambientais", "Acesso a crédito rural verde", "Valorização da propriedade"],
+        third: ["Serviços ecossistêmicos preservados", "Biodiversidade protegida", "Qualidade da água"]
+      },
+      implementationTime: { min: 12, max: 36 },
+      riskReduction: 85,
+      economicMultiplier: 3.7,
+      socialImpact: 4.3
+    },
+    {
+      id: "flo-083",
+      name: "Fiscalização participativa contra desmatamento",
+      sector: "Florestas e Ecossistemas",
+      category: "Proteção e Conservação",
+      description: "Sistema comunitário de monitoramento e denúncia de desmatamento ilegal",
+      typicalInvestment: { min: 80000, max: 400000 },
+      expectedBenefits: {
+        first: ["Redução de 80% no desmatamento ilegal", "Resposta rápida a infrações", "Cobertura territorial ampla"],
+        second: ["Economia em fiscalização oficial", "Empregos de guardiões ambientais", "Multas e compensações"],
+        third: ["Empoderamento comunitário", "Educação ambiental prática", "Coesão social"]
+      },
+      implementationTime: { min: 6, max: 18 },
+      riskReduction: 70,
+      economicMultiplier: 5.2,
+      socialImpact: 4.7
+    },
+    {
+      id: "flo-084",
+      name: "Monitoramento satelital de uso do solo",
+      sector: "Florestas e Ecossistemas",
+      category: "Proteção e Conservação",
+      description: "Sistema de monitoramento por satélite para detecção de mudanças na cobertura florestal",
+      typicalInvestment: { min: 200000, max: 1000000 },
+      expectedBenefits: {
+        first: ["Detecção em tempo real", "Cobertura de grandes áreas", "Evidência legal de infrações"],
+        second: ["Eficiência na fiscalização", "Redução de custos operacionais", "Tecnologia de ponta"],
+        third: ["Transparência ambiental", "Dados para pesquisa", "Governança territorial"]
+      },
+      implementationTime: { min: 12, max: 24 },
+      riskReduction: 75,
+      economicMultiplier: 4.8,
+      socialImpact: 4.1
+    },
+    {
+      id: "flo-085",
+      name: "Programas de educação ambiental nas comunidades",
+      sector: "Florestas e Ecossistemas",
+      category: "Proteção e Conservação",
+      description: "Capacitação comunitária em conservação e manejo sustentável de recursos naturais",
+      typicalInvestment: { min: 50000, max: 300000 },
+      expectedBenefits: {
+        first: ["Redução de 60% nas infrações ambientais", "Práticas sustentáveis adotadas", "Prevenção de conflitos"],
+        second: ["Ecoturismo de base comunitária", "Produtos sustentáveis certificados", "Empregos verdes"],
+        third: ["Cultura de conservação", "Transmissão de conhecimento", "Protagonismo local"]
+      },
+      implementationTime: { min: 12, max: 36 },
+      riskReduction: 55,
+      economicMultiplier: 3.4,
+      socialImpact: 4.9
+    },
+
+    // 🌿 C. Gestão e Monitoramento (161-240)
+    {
+      id: "flo-161",
+      name: "Monitoramento de desmatamento com drones",
+      sector: "Florestas e Ecossistemas",
+      category: "Gestão e Monitoramento",
+      description: "Sistema de vigilância aérea com drones para monitoramento florestal em tempo real",
+      typicalInvestment: { min: 150000, max: 800000 },
+      expectedBenefits: {
+        first: ["Detecção imediata de desmatamento", "Cobertura de áreas remotas", "Evidência audiovisual"],
+        second: ["Eficiência operacional 300% maior", "Redução de custos de fiscalização", "Tecnologia inovadora"],
+        third: ["Transparência total", "Dados para pesquisa", "Capacitação tecnológica local"]
+      },
+      implementationTime: { min: 6, max: 18 },
+      riskReduction: 80,
+      economicMultiplier: 5.5,
+      socialImpact: 4.2
+    },
+    {
+      id: "flo-162",
+      name: "Estações meteorológicas comunitárias",
+      sector: "Florestas e Ecossistemas",
+      category: "Gestão e Monitoramento",
+      description: "Rede de estações meteorológicas para monitoramento climático e previsão de riscos",
+      typicalInvestment: { min: 80000, max: 400000 },
+      expectedBenefits: {
+        first: ["Alertas precoces de eventos extremos", "Dados climáticos locais", "Prevenção de desastres"],
+        second: ["Agricultura de precisão melhorada", "Turismo com previsões locais", "Consultoria climática"],
+        third: ["Conhecimento científico comunitário", "Adaptação climática informada", "Resiliência local"]
+      },
+      implementationTime: { min: 4, max: 12 },
+      riskReduction: 65,
+      economicMultiplier: 4.1,
+      socialImpact: 4.5
+    },
+    {
+      id: "flo-163",
+      name: "Monitoramento de fauna com câmeras remotas",
+      sector: "Florestas e Ecossistemas",
+      category: "Gestão e Monitoramento",
+      description: "Sistema de câmeras trap para monitoramento não invasivo da fauna silvestre",
+      typicalInvestment: { min: 100000, max: 500000 },
+      expectedBenefits: {
+        first: ["Dados de biodiversidade precisos", "Detecção de espécies raras", "Monitoramento de saúde populacional"],
+        second: ["Ecoturismo científico", "Pesquisa rentável", "Consultoria em fauna"],
+        third: ["Conservação baseada em evidência", "Educação sobre fauna local", "Orgulho comunitário"]
+      },
+      implementationTime: { min: 6, max: 18 },
+      riskReduction: 45,
+      economicMultiplier: 3.8,
+      socialImpact: 4.6
+    },
+    {
+      id: "flo-164",
+      name: "Rede de sensores de umidade de solo",
+      sector: "Florestas e Ecossistemas",
+      category: "Gestão e Monitoramento",
+      description: "Sistema IoT para monitoramento contínuo da umidade do solo florestal",
+      typicalInvestment: { min: 120000, max: 600000 },
+      expectedBenefits: {
+        first: ["Prevenção de incêndios florestais", "Monitoramento de estresse hídrico", "Alertas automáticos"],
+        second: ["Manejo florestal otimizado", "Redução de perdas", "Tecnologia de precisão"],
+        third: ["Dados para pesquisa climática", "Adaptação baseada em dados", "Inovação tecnológica local"]
+      },
+      implementationTime: { min: 8, max: 24 },
+      riskReduction: 70,
+      economicMultiplier: 4.4,
+      socialImpact: 4.0
+    },
+    {
+      id: "flo-165",
+      name: "Monitoramento de qualidade de água em córregos",
+      sector: "Florestas e Ecossistemas",
+      category: "Gestão e Monitoramento",
+      description: "Sistema de sensores para monitoramento contínuo da qualidade da água em ecossistemas florestais",
+      typicalInvestment: { min: 90000, max: 450000 },
+      expectedBenefits: {
+        first: ["Detecção precoce de poluição", "Proteção de mananciais", "Qualidade hídrica garantida"],
+        second: ["Certificação de qualidade", "Abastecimento público confiável", "Consultoria hídrica"],
+        third: ["Saúde pública protegida", "Ecossistemas aquáticos preservados", "Educação sobre recursos hídricos"]
+      },
+      implementationTime: { min: 6, max: 15 },
+      riskReduction: 75,
+      economicMultiplier: 4.3,
+      socialImpact: 4.7
     }
   ],
 
