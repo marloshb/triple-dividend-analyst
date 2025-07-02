@@ -1,12 +1,21 @@
 
+import { useState } from "react";
 import { ClimateHeader } from "@/components/ClimateHeader";
 import { ProjectCalculator } from "@/components/ProjectCalculator";
 import { ProjectLibrary } from "@/components/ProjectLibrary";
 import { LocalPriorityAnalyzer } from "@/components/LocalPriorityAnalyzer";
 import { ProjectPortfolio } from "@/components/ProjectPortfolio";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ClimateProject } from "@/types/climate";
 
 const Index = () => {
+  const [calculatedProjects, setCalculatedProjects] = useState<ClimateProject[]>([]);
+
+  const handleCalculateProject = (project: ClimateProject) => {
+    setCalculatedProjects(prev => [...prev, project]);
+    console.log('Project calculated:', project);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-teal-50">
       <ClimateHeader />
@@ -22,7 +31,7 @@ const Index = () => {
           </TabsList>
 
           <TabsContent value="calculator">
-            <ProjectCalculator />
+            <ProjectCalculator onCalculate={handleCalculateProject} />
           </TabsContent>
 
           <TabsContent value="library">

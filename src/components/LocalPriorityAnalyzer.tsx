@@ -118,7 +118,7 @@ export function LocalPriorityAnalyzer() {
   const getUrgencyColor = (urgency: string) => {
     switch (urgency) {
       case 'crítica': return 'destructive';
-      case 'alta': return 'warning';
+      case 'alta': return 'outline';
       case 'média': return 'default';
       default: return 'secondary';
     }
