@@ -17,14 +17,14 @@ import {
 } from "lucide-react";
 
 export function ProjectLibrary() {
-  const [selectedSector, setSelectedSector] = useState<Sector | "">("");
+  const [selectedSector, setSelectedSector] = useState<Sector | "all">("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState<"name" | "investment" | "roi" | "impact">("name");
 
   const filteredProjects = Object.entries(adaptiveProjects).flatMap(([sector, projects]) => {
     return projects
       .filter(project => {
-        const matchesSector = !selectedSector || project.sector === selectedSector;
+        const matchesSector = selectedSector === "all" || project.sector === selectedSector;
         const matchesSearch = !searchTerm || 
           project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -92,12 +92,12 @@ export function ProjectLibrary() {
               className="w-full"
             />
           </div>
-          <Select value={selectedSector} onValueChange={(value) => setSelectedSector(value as Sector)}>
+          <Select value={selectedSector} onValueChange={(value) => setSelectedSector(value as Sector | "all")}>
             <SelectTrigger className="w-64">
               <SelectValue placeholder="Todos os setores" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">Todos os setores</SelectItem>
+              <SelectItem value="all">Todos os setores</SelectItem>
               {SECTORS.map(sector => (
                 <SelectItem key={sector} value={sector}>{sector}</SelectItem>
               ))}
