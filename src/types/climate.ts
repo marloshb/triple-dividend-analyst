@@ -305,7 +305,7 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
   "Ambiente Social e Educação": [
     {
       name: "Fundo Nacional de Desenvolvimento da Educação (FNDE)",
-      type: "Público Federal",
+      type: "público",
       typical_amount: { min: 10000, max: 500000 },
       focus: ["Educação ambiental", "Infraestrutura escolar", "Formação continuada"],
       requirements: [
@@ -317,7 +317,7 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
     },
     {
       name: "Instituto Arapyaú",
-      type: "Filantrópico",
+      type: "filantrópico",
       typical_amount: { min: 25000, max: 200000 },
       focus: ["Educação para sustentabilidade", "Inovação social", "Tecnologias sociais"],
       requirements: [
@@ -329,7 +329,7 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
     },
     {
       name: "Programa Criança Esperança - UNESCO",
-      type: "Internacional",
+      type: "multilateral",
       typical_amount: { min: 15000, max: 150000 },
       focus: ["Educação integral", "Proteção social", "Participação juvenil"],
       requirements: [
@@ -500,7 +500,7 @@ export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
   "Ambiente Social e Educação": [
     {
       name: "Instituto Paulo Freire",
-      type: "organizacao_social",
+      type: "ong",
       location: "São Paulo, SP",
       expertise: ["Educação popular", "Pedagogia crítica", "Formação de educadores"],
       previous_projects: [
@@ -511,7 +511,7 @@ export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
     },
     {
       name: "Ashoka Brasil",
-      type: "ong_internacional",
+      type: "ong",
       location: "São Paulo, SP",
       expertise: ["Empreendedorismo social", "Inovação sistêmica", "Educação transformadora"],
       previous_projects: [
