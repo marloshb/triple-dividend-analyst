@@ -339,6 +339,48 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
       ],
       contact_info: "brasilia@unesco.org"
     }
+  ],
+  "Engenharia Costeira e Pesca": [
+    {
+      name: "Ministério da Pesca e Aquicultura",
+      type: "público",
+      focus: ["pesca artesanal", "aquicultura sustentável", "infraestrutura pesqueira"],
+      typical_amount: { min: 500000, max: 10000000 },
+      requirements: ["projeto técnico", "licenciamento ambiental", "organização social"],
+      contact_info: "Secretaria Nacional de Pesca e Aquicultura"
+    },
+    {
+      name: "Ministério do Meio Ambiente - Fundo Nacional do Meio Ambiente",
+      type: "público",
+      focus: ["conservação costeira", "unidades de conservação", "educação ambiental"],
+      typical_amount: { min: 100000, max: 5000000 },
+      requirements: ["projeto socioambiental", "contrapartida", "prestação de contas"],
+      contact_info: "FNMA - Fundo Nacional do Meio Ambiente"
+    },
+    {
+      name: "Banco Mundial - Blue Economy Program",
+      type: "multilateral",
+      focus: ["economia azul", "pesca sustentável", "conservação marinha"],
+      typical_amount: { min: 5000000, max: 100000000 },
+      requirements: ["projeto nacional", "impacto transformacional", "co-financiamento"],
+      contact_info: "www.worldbank.org/blueconomy"
+    },
+    {
+      name: "FAO - Organização das Nações Unidas para Alimentação e Agricultura",
+      type: "multilateral",
+      focus: ["segurança alimentar", "pesca responsável", "aquicultura"],
+      typical_amount: { min: 200000, max: 8000000 },
+      requirements: ["foco em vulnerabilidade", "participação comunitária", "sustentabilidade"],
+      contact_info: "fao-br@fao.org"
+    },
+    {
+      name: "Ocean Foundation",
+      type: "filantrópico",
+      focus: ["conservação oceânica", "comunidades costeiras", "pesquisa marinha"],
+      typical_amount: { min: 50000, max: 2000000 },
+      requirements: ["impacto oceânico", "base científica", "monitoramento"],
+      contact_info: "www.oceanfdn.org"
+    }
   ]
 };
 
@@ -530,6 +572,50 @@ export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
         "Laboratório de Educação e Política Ambiental",
         "Rede Brasileira de Educação Ambiental"
       ]
+    }
+  ],
+  "Engenharia Costeira e Pesca": [
+    {
+      name: "Instituto de Pesquisas Hidráulicas (IPH/UFRGS)",
+      type: "universidade",
+      expertise: ["engenharia costeira", "modelagem oceânica", "erosão costeira"],
+      location: "Porto Alegre, RS",
+      previous_projects: ["Projeto Orla", "Estudos de Erosão Costeira RS"]
+    },
+    {
+      name: "Instituto de Estudos do Mar Almirante Paulo Moreira (IEAPM)",
+      type: "instituto_pesquisa",
+      expertise: ["oceanografia", "engenharia naval", "meio ambiente marinho"],
+      location: "Arraial do Cabo, RJ",
+      previous_projects: ["Programa Antártico Brasileiro", "Monitoramento Oceânico"]
+    },
+    {
+      name: "COPPE/UFRJ - Programa de Engenharia Oceânica",
+      type: "universidade",
+      expertise: ["engenharia oceânica", "estruturas marinhas", "energia offshore"],
+      location: "Rio de Janeiro, RJ",
+      previous_projects: ["Plataformas Petrolíferas", "Energia das Ondas"]
+    },
+    {
+      name: "Instituto de Pesca (IP/APTA)",
+      type: "instituto_pesquisa",
+      expertise: ["recursos pesqueiros", "aquicultura", "tecnologia pesqueira"],
+      location: "Santos, SP",
+      previous_projects: ["Avaliação de Estoques Pesqueiros", "Aquicultura Marinha"]
+    },
+    {
+      name: "The Nature Conservancy Brasil",
+      type: "ong",
+      expertise: ["conservação marinha", "pesca sustentável", "áreas protegidas"],
+      location: "Brasília, DF",
+      previous_projects: ["Programa Marinho", "Conservação de Recifes"]
+    },
+    {
+      name: "Blue Solutions - IUCN",
+      type: "organismo_internacional",
+      expertise: ["soluções baseadas na natureza", "economia azul", "adaptação costeira"],
+      location: "Gland, Suíça (atuação global)",
+      previous_projects: ["Blue Solutions Showcase", "Coastal Resilience"]
     }
   ]
 };

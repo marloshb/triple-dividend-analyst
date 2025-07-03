@@ -56,7 +56,8 @@ export function ProjectLibrary() {
       "Ambiente Social e Educação": Users,
       "Engenharia Costeira e Pesca": Globe,
       "Saúde e Bem Estar": Heart,
-      "Governança e Finanças Climáticas": DollarSign
+      "Governança e Finanças Climáticas": DollarSign,
+      "Finanças Climáticas": DollarSign
     };
     return icons[sector] || Globe;
   };
@@ -95,7 +96,11 @@ export function ProjectLibrary() {
       "Educação Ambiental e Sensibilização": BookOpen,
       "Inclusão e Empoderamento Comunitário": Users,
       "Capacitação Técnica e Tecnológica": Zap,
-      "Participação, Planejamento e Governança": Target
+      "Participação, Planejamento e Governança": Target,
+      "Infraestrutura Costeira e Proteção": Shield,
+      "Monitoramento e Tecnologia": Target,
+      "Gestão Pesqueira e Aquicultura": Leaf,
+      "Planejamento e Governança": Users,
     };
     return categoryIcons[category] || Globe;
   };
