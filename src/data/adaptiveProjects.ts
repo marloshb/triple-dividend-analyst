@@ -2,6 +2,7 @@ import { AdaptiveProjectTemplate, Sector } from "@/types/climate";
 import { infraestruturaUrbanismoProjects } from "./sectors/infraestrutura-urbanismo";
 import { saneamentoSaudeProjects } from "./sectors/saneamento-saude";
 import { infraestruturaEnergiaProjects } from "./sectors/infraestrutura-energia";
+import { transportesResilientesProjects } from "./sectors/transportes-resilientes";
 
 // Agriculture and Water Resources projects
 const agriculturaProjects: AdaptiveProjectTemplate[] = [
