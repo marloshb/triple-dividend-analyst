@@ -214,6 +214,30 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
       typical_amount: { min: 1000000, max: 50000000 },
       requirements: ["benefício global", "co-financiamento", "capacitação local"]
     }
+  ],
+  "Transportes Resilientes": [
+    {
+      name: "BNDES Mobilidade Urbana",
+      type: "público",
+      focus: ["transporte sustentável", "infraestrutura viária", "mobilidade resiliente"],
+      typical_amount: { min: 5000000, max: 200000000 },
+      requirements: ["projeto executivo", "licenciamento ambiental", "viabilidade técnica"],
+      contact_info: "BNDES - Linha Mobilidade Urbana"
+    },
+    {
+      name: "Ministério das Cidades",
+      type: "público",
+      focus: ["infraestrutura urbana", "transporte coletivo", "ciclovias"],
+      typical_amount: { min: 1000000, max: 50000000 },
+      requirements: ["contrapartida municipal", "projeto aprovado", "capacidade técnica"]
+    },
+    {
+      name: "BID Invest - Infraestrutura Resiliente",
+      type: "multilateral",
+      focus: ["infraestrutura climática", "transporte limpo", "tecnologia IoT"],
+      typical_amount: { min: 10000000, max: 500000000 },
+      requirements: ["impacto climático", "sustentabilidade financeira", "governança"]
+    }
   ]
 };
 
@@ -281,6 +305,35 @@ export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
       expertise: ["transição energética", "microgrids", "armazenamento"],
       location: "Colorado, EUA (atuação global)",
       previous_projects: ["Islands Energy Program", "Smart Grid Demonstration"]
+    }
+  ],
+  "Transportes Resilientes": [
+    {
+      name: "IPT - Instituto de Pesquisas Tecnológicas",
+      type: "instituto_pesquisa",
+      expertise: ["pavimentos", "infraestrutura viária", "materiais de construção"],
+      location: "São Paulo, Brasil",
+      previous_projects: ["Pavimentos Permeáveis", "Asfalto Ecológico"]
+    },
+    {
+      name: "COPPE/UFRJ - Programa de Engenharia de Transportes",
+      type: "universidade",
+      expertise: ["planejamento de transportes", "mobilidade urbana", "sistemas inteligentes"],
+      location: "Rio de Janeiro, Brasil"
+    },
+    {
+      name: "WRI Brasil - Cidades Sustentáveis",
+      type: "ong",
+      expertise: ["mobilidade urbana", "transporte sustentável", "planejamento urbano"],
+      location: "Brasil",
+      previous_projects: ["BRT", "Ciclovias Protegidas"]
+    },
+    {
+      name: "ITDP - Institute for Transportation & Development Policy",
+      type: "ong",
+      expertise: ["transporte sustentável", "mobilidade ativa", "BRT"],
+      location: "Nova York, EUA (atuação global)",
+      previous_projects: ["TransMilenio", "Bus Rapid Transit"]
     }
   ]
 };

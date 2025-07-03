@@ -720,13 +720,13 @@ const governancaProjects: AdaptiveProjectTemplate[] = [
   }
 ];
 
-export const adaptiveProjects: Record<Sector, AdaptiveProjectTemplate[]> = {
+export const adaptiveProjects = {
   "Agricultura e Recursos Hídricos": agriculturaProjects,
   "Florestas e Ecossistemas": florestasProjects,
   "Infraestrutura e Urbanismo": infraestruturaUrbanismoProjects,
   "Saneamento e Saúde Pública": saneamentoSaudeProjects,
   "Infraestrutura de Energia": infraestruturaEnergiaProjects,
-  "Transportes Resilientes": transportesProjects,
+  "Transportes Resilientes": transportesResilientesProjects,
   "Ambiente Social e Educação": socialProjects,
   "Engenharia Costeira e Pesca": costeiroProjects,
   "Saúde e Bem Estar": saudeProjects,

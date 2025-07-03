@@ -12,7 +12,8 @@ import { formatCurrency } from "@/utils/climateCalculations";
 import { 
   Search, BookOpen, TrendingUp, Shield, Heart, 
   DollarSign, Users, Zap, Building, Leaf, 
-  Calculator, Award, Target, Globe, Sun, Wind, Battery
+  Calculator, Award, Target, Globe, Sun, Wind, Battery,
+  Car, Bike, Bus, Truck
 } from "lucide-react";
 
 export function ProjectLibrary() {
@@ -51,7 +52,7 @@ export function ProjectLibrary() {
       "Infraestrutura e Urbanismo": Building,
       "Saneamento e Saúde Pública": Heart,
       "Infraestrutura de Energia": Zap,
-      "Transportes Resilientes": Target,
+      "Transportes Resilientes": Car,
       "Ambiente Social e Educação": Users,
       "Engenharia Costeira e Pesca": Globe,
       "Saúde e Bem Estar": Heart,
@@ -78,7 +79,11 @@ export function ProjectLibrary() {
       "Infraestrutura Sanitária": Heart,
       "Controle de Doenças": Heart,
       "Monitoramento & Qualidade da Água": Heart,
-      "Educação e Governança": Users
+      "Educação e Governança": Users,
+      "Infraestrutura Rodoviária Resiliente": Car,
+      "Infraestrutura Cicloviária Resiliente": Bike,
+      "Transporte Coletivo Resiliente": Bus,
+      "Tecnologia, Monitoramento & Inovação": Target
     };
     return categoryIcons[category] || Globe;
   };
