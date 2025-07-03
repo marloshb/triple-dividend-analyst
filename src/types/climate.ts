@@ -135,6 +135,7 @@ export const SECTORS = [
   "Ambiente Social e Educação",
   "Engenharia Costeira e Pesca",
   "Saúde e Bem Estar",
+  "Finanças Climáticas",
   "Governança e Finanças Climáticas"
 ] as const;
 
@@ -269,6 +270,37 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
       typical_amount: { min: 1000000, max: 100000000 },
       requirements: ["viabilidade técnica", "impacto social", "sustentabilidade financeira"]
     }
+  ],
+  "Finanças Climáticas": [
+    {
+      name: "BNDES - Fundo Clima",
+      type: "público",
+      focus: ["financiamento climático", "instrumentos financeiros verdes", "fundos de adaptação"],
+      typical_amount: { min: 5000000, max: 500000000 },
+      requirements: ["projeto estruturado", "análise de risco climático", "governança transparente"],
+      contact_info: "BNDES - Área de Meio Ambiente"
+    },
+    {
+      name: "Green Climate Fund (GCF)",
+      type: "multilateral",
+      focus: ["transformação climática", "instrumentos financeiros inovadores", "capacitação institutional"],
+      typical_amount: { min: 10000000, max: 250000000 },
+      requirements: ["entidade acreditada", "teoria da mudança robusta", "impacto transformacional"]
+    },
+    {
+      name: "BID Lab - Laboratório de Inovação",
+      type: "multilateral", 
+      focus: ["inovação financeira", "instrumentos de mercado", "fintech climática"],
+      typical_amount: { min: 500000, max: 5000000 },
+      requirements: ["inovação comprovada", "escalabilidade", "sustentabilidade financeira"]
+    },
+    {
+      name: "Climate Policy Initiative (CPI)",
+      type: "filantrópico",
+      focus: ["análise de políticas", "instrumentos financeiros", "capacitação técnica"],
+      typical_amount: { min: 200000, max: 2000000 },
+      requirements: ["relevância política", "base de evidências", "potencial de replicação"]
+    }
   ]
 };
 
@@ -395,6 +427,36 @@ export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
       expertise: ["saúde climática", "advocacy", "políticas públicas"],
       location: "Austrália (atuação global)",
       previous_projects: ["Climate Health Report", "Healthy Climate Prescription"]
+    }
+  ],
+  "Finanças Climáticas": [
+    {
+      name: "Fundação Getulio Vargas (FGV) - Centro de Estudos em Sustentabilidade",
+      type: "universidade",
+      expertise: ["finanças sustentáveis", "análise de risco climático", "instrumentos financeiros"],
+      location: "São Paulo, Brasil",
+      previous_projects: ["Taxonomia Verde Brasileira", "Mercado de Títulos Verdes"]
+    },
+    {
+      name: "Climate Policy Initiative (CPI/PUC-Rio)",
+      type: "instituto_pesquisa",
+      expertise: ["política climática", "financiamento climático", "análise econômica"],
+      location: "Rio de Janeiro, Brasil",
+      previous_projects: ["Panorama do Financiamento Climático", "NDC do Brasil"]
+    },
+    {
+      name: "International Finance Corporation (IFC)",
+      type: "organismo_internacional",
+      expertise: ["financiamento privado", "mercados emergentes", "risco climático"],
+      location: "Washington, EUA (atuação global)",
+      previous_projects: ["Green Bonds Program", "Climate Investment Opportunities"]
+    },
+    {
+      name: "Climate Finance Advisors",
+      type: "empresa_consultoria",
+      expertise: ["estruturação de fundos", "captação internacional", "instrumentos financeiros"],
+      location: "Londres, Reino Unido (atuação global)",
+      previous_projects: ["Green Climate Fund Projects", "Blended Finance Structures"]
     }
   ]
 };

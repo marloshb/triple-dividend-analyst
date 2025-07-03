@@ -13,7 +13,7 @@ import {
   Search, BookOpen, TrendingUp, Shield, Heart, 
   DollarSign, Users, Zap, Building, Leaf, 
   Calculator, Award, Target, Globe, Sun, Wind, Battery,
-  Car, Bike, Bus, Truck
+  Car, Bike, Bus, Truck, BarChart3
 } from "lucide-react";
 
 export function ProjectLibrary() {
@@ -87,7 +87,11 @@ export function ProjectLibrary() {
       "Infraestrutura de Saúde Resiliente": Heart,
       "Prevenção e Monitoramento de Saúde": Shield,
       "Promoção do Bem-Estar Comunitário": Users,
-      "Capacitação, Governança e Educação em Saúde": Award
+      "Capacitação, Governança e Educação em Saúde": Award,
+      "Produtos Financeiros Verdes e Inclusivos": DollarSign,
+      "Mecanismos de Financiamento Público e PPPs": Building,
+      "Captação Internacional e Finanças Globais": Globe,
+      "Transparência, Monitoramento e Taxonomia": BarChart3
     };
     return categoryIcons[category] || Globe;
   };
