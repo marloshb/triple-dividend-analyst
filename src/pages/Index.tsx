@@ -5,11 +5,22 @@ import { ProjectCalculator } from "@/components/ProjectCalculator";
 import { ProjectLibrary } from "@/components/ProjectLibrary";
 import { LocalPriorityAnalyzer } from "@/components/LocalPriorityAnalyzer";
 import { ProjectPortfolio } from "@/components/ProjectPortfolio";
+import { GovernanceMainPanel } from "@/components/governance/GovernanceMainPanel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ClimateProject } from "@/types/climate";
+import type { UserProfile } from "@/types/geoai";
 
 const Index = () => {
   const [calculatedProjects, setCalculatedProjects] = useState<ClimateProject[]>([]);
+  
+  // Mock user profile for governance module
+  const [userProfile] = useState<UserProfile>({
+    id: "1",
+    name: "Ana Silva",
+    email: "ana.silva@prefeitura.gov.br",
+    role: "gestor_publico",
+    permissions: ["read", "write", "admin"]
+  });
 
   const handleCalculateProject = (project: ClimateProject) => {
     setCalculatedProjects(prev => [...prev, project]);
@@ -47,12 +58,7 @@ const Index = () => {
           </TabsContent>
 
           <TabsContent value="governance">
-            <div className="text-center py-12">
-              <h2 className="text-2xl font-bold mb-4">Módulo de Governança</h2>
-              <p className="text-muted-foreground">
-                Ferramentas avançadas de governança climática em desenvolvimento
-              </p>
-            </div>
+            <GovernanceMainPanel userProfile={userProfile} />
           </TabsContent>
         </Tabs>
       </main>
