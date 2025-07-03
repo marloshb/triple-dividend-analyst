@@ -1,6 +1,7 @@
 import { AdaptiveProjectTemplate, Sector } from "@/types/climate";
 import { infraestruturaUrbanismoProjects } from "./sectors/infraestrutura-urbanismo";
 import { saneamentoSaudeProjects } from "./sectors/saneamento-saude";
+import { infraestruturaEnergiaProjects } from "./sectors/infraestrutura-energia";
 
 // Agriculture and Water Resources projects
 const agriculturaProjects: AdaptiveProjectTemplate[] = [
@@ -534,43 +535,6 @@ const florestasProjects: AdaptiveProjectTemplate[] = [
 ];
 
 // Other sectors projects
-const energiaProjects: AdaptiveProjectTemplate[] = [
-  {
-    id: "ene-001",
-    name: "Painéis solares comunitários",
-    sector: "Infraestrutura de Energia",
-    category: "Energia Renovável",
-    description: "Sistemas fotovoltaicos compartilhados para comunidades resilientes",
-    typicalInvestment: { min: 200000, max: 1500000 },
-    expectedBenefits: {
-      first: ["Independência energética", "Redução de apagões", "Energia de backup"],
-      second: ["Redução de custos energéticos", "Geração de renda", "Empregos verdes"],
-      third: ["Redução de emissões", "Capacitação técnica", "Autonomia comunitária"]
-    },
-    implementationTime: { min: 6, max: 18 },
-    riskReduction: 50,
-    economicMultiplier: 4.5,
-    socialImpact: 4.3
-  },
-  {
-    id: "ene-002",
-    name: "Mini-redes off-grid",
-    sector: "Infraestrutura de Energia",
-    category: "Autonomia Energética",
-    description: "Sistemas isolados de geração e distribuição de energia elétrica",
-    typicalInvestment: { min: 300000, max: 2000000 },
-    expectedBenefits: {
-      first: ["Segurança energética", "Resiliência a desastres", "Continuidade de serviços"],
-      second: ["Desenvolvimento econômico local", "Novos negócios", "Competitividade"],
-      third: ["Inclusão digital", "Qualidade de vida", "Desenvolvimento rural"]
-    },
-    implementationTime: { min: 9, max: 24 },
-    riskReduction: 65,
-    economicMultiplier: 5.1,
-    socialImpact: 4.6
-  }
-];
-
 const transportesProjects: AdaptiveProjectTemplate[] = [
   {
     id: "tra-001",
@@ -761,7 +725,7 @@ export const adaptiveProjects: Record<Sector, AdaptiveProjectTemplate[]> = {
   "Florestas e Ecossistemas": florestasProjects,
   "Infraestrutura e Urbanismo": infraestruturaUrbanismoProjects,
   "Saneamento e Saúde Pública": saneamentoSaudeProjects,
-  "Infraestrutura de Energia": energiaProjects,
+  "Infraestrutura de Energia": infraestruturaEnergiaProjects,
   "Transportes Resilientes": transportesProjects,
   "Ambiente Social e Educação": socialProjects,
   "Engenharia Costeira e Pesca": costeiroProjects,

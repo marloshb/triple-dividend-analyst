@@ -1,4 +1,3 @@
-
 export interface ClimateProject {
   id: string;
   name: string;
@@ -182,6 +181,39 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
       typical_amount: { min: 50000, max: 2000000 },
       requirements: ["conservação comprovada", "envolvimento comunitário", "monitoramento"]
     }
+  ],
+  "Infraestrutura de Energia": [
+    {
+      name: "FINEP - Financiadora de Estudos e Projetos",
+      type: "público",
+      focus: ["energia renovável", "eficiência energética", "inovação"],
+      typical_amount: { min: 500000, max: 10000000 },
+      requirements: ["projeto inovador", "contrapartida", "viabilidade técnica"],
+      contact_info: "www.finep.gov.br"
+    },
+    {
+      name: "BNDES Finem Energia",
+      type: "público",
+      focus: ["energia solar", "energia eólica", "smart grids"],
+      typical_amount: { min: 1000000, max: 100000000 },
+      requirements: ["análise técnica", "garantias", "licenciamento ambiental"],
+      contact_info: "BNDES - Linha Energia"
+    },
+    {
+      name: "BID - Banco Interamericano de Desenvolvimento",
+      type: "multilateral",
+      focus: ["energia limpa", "redes inteligentes", "armazenamento"],
+      typical_amount: { min: 5000000, max: 200000000 },
+      requirements: ["projeto regional", "sustentabilidade", "impacto social"],
+      contact_info: "www.iadb.org"
+    },
+    {
+      name: "GEF - Global Environment Facility",
+      type: "multilateral",
+      focus: ["energia renovável rural", "acesso à energia", "mudanças climáticas"],
+      typical_amount: { min: 1000000, max: 50000000 },
+      requirements: ["benefício global", "co-financiamento", "capacitação local"]
+    }
   ]
 };
 
@@ -219,6 +251,36 @@ export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
       type: "ong",
       expertise: ["restauração florestal", "políticas ambientais", "mudanças climáticas"],
       location: "Brasil"
+    }
+  ],
+  "Infraestrutura de Energia": [
+    {
+      name: "CEPEL - Centro de Pesquisas de Energia Elétrica",
+      type: "instituto_pesquisa",
+      expertise: ["sistemas elétricos", "energia renovável", "smart grids"],
+      location: "Rio de Janeiro, Brasil",
+      previous_projects: ["Sistema Interligado Nacional", "Redes Inteligentes"]
+    },
+    {
+      name: "LACTEC - Instituto de Tecnologia para o Desenvolvimento",
+      type: "instituto_pesquisa",
+      expertise: ["energia solar", "energia eólica", "eficiência energética"],
+      location: "Curitiba, Brasil",
+      previous_projects: ["Atlas Solar", "Sistemas Fotovoltaicos"]
+    },
+    {
+      name: "IRENA - International Renewable Energy Agency",
+      type: "organismo_internacional",
+      expertise: ["energia renovável", "políticas energéticas", "capacitação"],
+      location: "Abu Dhabi (atuação global)",
+      previous_projects: ["Global Energy Transformation", "Renewable Energy Statistics"]
+    },
+    {
+      name: "Rocky Mountain Institute",
+      type: "ong",
+      expertise: ["transição energética", "microgrids", "armazenamento"],
+      location: "Colorado, EUA (atuação global)",
+      previous_projects: ["Islands Energy Program", "Smart Grid Demonstration"]
     }
   ]
 };

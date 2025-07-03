@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,7 @@ import { formatCurrency } from "@/utils/climateCalculations";
 import { 
   Search, BookOpen, TrendingUp, Shield, Heart, 
   DollarSign, Users, Zap, Building, Leaf, 
-  Calculator, Award, Target, Globe
+  Calculator, Award, Target, Globe, Sun, Wind, Battery
 } from "lucide-react";
 
 export function ProjectLibrary() {
@@ -61,6 +60,29 @@ export function ProjectLibrary() {
     return icons[sector] || Globe;
   };
 
+  const getCategoryIcon = (category: string) => {
+    const categoryIcons: Record<string, any> = {
+      "Energia Solar": Sun,
+      "Energia Eólica": Wind,
+      "Armazenamento e Eficiência": Battery,
+      "Integração e Rede Inteligente": Zap,
+      "Captação e Armazenamento de Água": Leaf,
+      "Irrigação Eficiente": Leaf,
+      "Restauração e Reflorestamento": Leaf,
+      "Proteção e Conservação": Shield,
+      "Gestão e Monitoramento": Target,
+      "Drenagem e Gestão de Águas Pluviais": Building,
+      "Infraestrutura Verde": Building,
+      "Mobilidade Resiliente": Target,
+      "Infraestrutura Física": Building,
+      "Infraestrutura Sanitária": Heart,
+      "Controle de Doenças": Heart,
+      "Monitoramento & Qualidade da Água": Heart,
+      "Educação e Governança": Users
+    };
+    return categoryIcons[category] || Globe;
+  };
+
   const calculateEstimatedBenefits = (project: any) => {
     const avgInvestment = (project.typicalInvestment.min + project.typicalInvestment.max) / 2;
     const totalBenefits = avgInvestment * project.economicMultiplier;
@@ -81,7 +103,7 @@ export function ProjectLibrary() {
           Biblioteca de Projetos Adaptativos & Benchmarks
         </CardTitle>
         <p className="text-sm text-muted-foreground">
-          Explore 100+ projetos de adaptação climática com análise Triple Dividend completa
+          Explore 300+ projetos de adaptação climática com análise Triple Dividend completa
         </p>
       </CardHeader>
       <CardContent>
