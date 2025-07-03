@@ -91,7 +91,11 @@ export function ProjectLibrary() {
       "Produtos Financeiros Verdes e Inclusivos": DollarSign,
       "Mecanismos de Financiamento Público e PPPs": Building,
       "Captação Internacional e Finanças Globais": Globe,
-      "Transparência, Monitoramento e Taxonomia": BarChart3
+      "Transparência, Monitoramento e Taxonomia": BarChart3,
+      "Educação Ambiental e Sensibilização": BookOpen,
+      "Inclusão e Empoderamento Comunitário": Users,
+      "Capacitação Técnica e Tecnológica": Zap,
+      "Participação, Planejamento e Governança": Target
     };
     return categoryIcons[category] || Globe;
   };

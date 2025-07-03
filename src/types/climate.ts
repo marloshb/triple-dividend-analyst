@@ -131,12 +131,12 @@ export const SECTORS = [
   "Infraestrutura e Urbanismo",
   "Saneamento e Saúde Pública",
   "Infraestrutura de Energia",
-  "Transportes Resilientes", 
+  "Transportes Resilientes",
   "Ambiente Social e Educação",
   "Engenharia Costeira e Pesca",
   "Saúde e Bem Estar",
-  "Finanças Climáticas",
-  "Governança e Finanças Climáticas"
+  "Governança e Finanças Climáticas",
+  "Finanças Climáticas"
 ] as const;
 
 export type Sector = typeof SECTORS[number];
@@ -301,6 +301,44 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
       typical_amount: { min: 200000, max: 2000000 },
       requirements: ["relevância política", "base de evidências", "potencial de replicação"]
     }
+  ],
+  "Ambiente Social e Educação": [
+    {
+      name: "Fundo Nacional de Desenvolvimento da Educação (FNDE)",
+      type: "Público Federal",
+      typical_amount: { min: 10000, max: 500000 },
+      focus: ["Educação ambiental", "Infraestrutura escolar", "Formação continuada"],
+      requirements: [
+        "Projeto pedagógico aprovado",
+        "Contrapartida municipal",
+        "Prestação de contas regular"
+      ],
+      contact_info: "www.fnde.gov.br"
+    },
+    {
+      name: "Instituto Arapyaú",
+      type: "Filantrópico",
+      typical_amount: { min: 25000, max: 200000 },
+      focus: ["Educação para sustentabilidade", "Inovação social", "Tecnologias sociais"],
+      requirements: [
+        "Impacto social mensurável",
+        "Sustentabilidade do projeto",
+        "Articulação territorial"
+      ],
+      contact_info: "contato@arapyau.org.br"
+    },
+    {
+      name: "Programa Criança Esperança - UNESCO",
+      type: "Internacional",
+      typical_amount: { min: 15000, max: 150000 },
+      focus: ["Educação integral", "Proteção social", "Participação juvenil"],
+      requirements: [
+        "Foco em crianças e adolescentes",
+        "Metodologia participativa",
+        "Sustentabilidade social"
+      ],
+      contact_info: "brasilia@unesco.org"
+    }
   ]
 };
 
@@ -457,6 +495,41 @@ export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
       expertise: ["estruturação de fundos", "captação internacional", "instrumentos financeiros"],
       location: "Londres, Reino Unido (atuação global)",
       previous_projects: ["Green Climate Fund Projects", "Blended Finance Structures"]
+    }
+  ],
+  "Ambiente Social e Educação": [
+    {
+      name: "Instituto Paulo Freire",
+      type: "organizacao_social",
+      location: "São Paulo, SP",
+      expertise: ["Educação popular", "Pedagogia crítica", "Formação de educadores"],
+      previous_projects: [
+        "Programa de Alfabetização de Jovens e Adultos",
+        "Formação de Educadores Ambientais",
+        "Círculos de Cultura Climática"
+      ]
+    },
+    {
+      name: "Ashoka Brasil",
+      type: "ong_internacional",
+      location: "São Paulo, SP",
+      expertise: ["Empreendedorismo social", "Inovação sistêmica", "Educação transformadora"],
+      previous_projects: [
+        "Rede de Jovens Changemakers",
+        "Programa Escolas Transformadoras",
+        "Hub de Inovação Social"
+      ]
+    },
+    {
+      name: "Centro de Educação Ambiental - USP",
+      type: "universidade",
+      location: "São Paulo, SP", 
+      expertise: ["Pesquisa em educação ambiental", "Formação de professores", "Metodologias participativas"],
+      previous_projects: [
+        "Observatório de Educação Ambiental",
+        "Laboratório de Educação e Política Ambiental",
+        "Rede Brasileira de Educação Ambiental"
+      ]
     }
   ]
 };
