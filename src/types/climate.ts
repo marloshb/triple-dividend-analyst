@@ -238,6 +238,37 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
       typical_amount: { min: 10000000, max: 500000000 },
       requirements: ["impacto climático", "sustentabilidade financeira", "governança"]
     }
+  ],
+  "Saúde e Bem Estar": [
+    {
+      name: "Ministério da Saúde - SUS",
+      type: "público",
+      focus: ["atenção básica", "vigilância em saúde", "infraestrutura resiliente"],
+      typical_amount: { min: 100000, max: 5000000 },
+      requirements: ["projeto executivo", "contrapartida municipal", "aprovação do conselho de saúde"],
+      contact_info: "Fundo Nacional de Saúde"
+    },
+    {
+      name: "OPAS - Organização Pan-Americana da Saúde",
+      type: "multilateral",
+      focus: ["saúde pública", "emergências sanitárias", "adaptação climática"],
+      typical_amount: { min: 200000, max: 10000000 },
+      requirements: ["projeto regional", "impacto em saúde pública", "sustentabilidade"]
+    },
+    {
+      name: "Fundação Gates",
+      type: "filantrópico",
+      focus: ["saúde global", "tecnologias inovadoras", "populações vulneráveis"],
+      typical_amount: { min: 500000, max: 50000000 },
+      requirements: ["inovação comprovada", "impacto mensurável", "escalabilidade"]
+    },
+    {
+      name: "BNDES Social",
+      type: "público",
+      focus: ["infraestrutura social", "saúde pública", "projetos socioambientais"],
+      typical_amount: { min: 1000000, max: 100000000 },
+      requirements: ["viabilidade técnica", "impacto social", "sustentabilidade financeira"]
+    }
   ]
 };
 
@@ -334,6 +365,36 @@ export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
       expertise: ["transporte sustentável", "mobilidade ativa", "BRT"],
       location: "Nova York, EUA (atuação global)",
       previous_projects: ["TransMilenio", "Bus Rapid Transit"]
+    }
+  ],
+  "Saúde e Bem Estar": [
+    {
+      name: "FIOCRUZ - Fundação Oswaldo Cruz",
+      type: "instituto_pesquisa",
+      expertise: ["saúde pública", "vigilância epidemiológica", "saúde ambiental"],
+      location: "Rio de Janeiro, Brasil",
+      previous_projects: ["Observatório de Clima e Saúde", "Vigiar SUS"]
+    },
+    {
+      name: "USP - Faculdade de Saúde Pública",
+      type: "universidade",
+      expertise: ["epidemiologia", "saúde ambiental", "políticas de saúde"],
+      location: "São Paulo, Brasil",
+      previous_projects: ["Estudo ELSA", "Projeto São Paulo Megacity"]
+    },
+    {
+      name: "OPAS - Organização Pan-Americana da Saúde",
+      type: "organismo_internacional",
+      expertise: ["saúde pública", "emergências sanitárias", "mudanças climáticas"],
+      location: "Washington, EUA (atuação América Latina)",
+      previous_projects: ["Saúde nas Américas", "Smart Hospitals"]
+    },
+    {
+      name: "Climate and Health Alliance",
+      type: "ong",
+      expertise: ["saúde climática", "advocacy", "políticas públicas"],
+      location: "Austrália (atuação global)",
+      previous_projects: ["Climate Health Report", "Healthy Climate Prescription"]
     }
   ]
 };

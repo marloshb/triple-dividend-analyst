@@ -83,7 +83,11 @@ export function ProjectLibrary() {
       "Infraestrutura Rodoviária Resiliente": Car,
       "Infraestrutura Cicloviária Resiliente": Bike,
       "Transporte Coletivo Resiliente": Bus,
-      "Tecnologia, Monitoramento & Inovação": Target
+      "Tecnologia, Monitoramento & Inovação": Target,
+      "Infraestrutura de Saúde Resiliente": Heart,
+      "Prevenção e Monitoramento de Saúde": Shield,
+      "Promoção do Bem-Estar Comunitário": Users,
+      "Capacitação, Governança e Educação em Saúde": Award
     };
     return categoryIcons[category] || Globe;
   };
