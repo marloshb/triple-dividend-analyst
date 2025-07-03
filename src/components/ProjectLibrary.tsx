@@ -57,7 +57,8 @@ export function ProjectLibrary() {
       "Engenharia Costeira e Pesca": Globe,
       "Saúde e Bem Estar": Heart,
       "Governança e Finanças Climáticas": DollarSign,
-      "Finanças Climáticas": DollarSign
+      "Finanças Climáticas": DollarSign,
+      "Governança": Building
     };
     return icons[sector] || Globe;
   };
@@ -101,6 +102,10 @@ export function ProjectLibrary() {
       "Monitoramento e Tecnologia": Target,
       "Gestão Pesqueira e Aquicultura": Leaf,
       "Planejamento e Governança": Users,
+      "Estruturação de Políticas, Planos e Marcos Legais": Building,
+      "Participação Social, Inclusão e Controle Social": Users,
+      "Coordenação Interinstitucional e Governança Multinível": Target,
+      "Monitoramento, Indicadores e Transparência": BarChart3,
     };
     return categoryIcons[category] || Globe;
   };

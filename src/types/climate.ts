@@ -133,10 +133,11 @@ export const SECTORS = [
   "Infraestrutura de Energia",
   "Transportes Resilientes",
   "Ambiente Social e Educação",
-  "Engenharia Costeira e Pesca",
+  "Engenharia Costeira e Pesca", 
   "Saúde e Bem Estar",
   "Governança e Finanças Climáticas",
-  "Finanças Climáticas"
+  "Finanças Climáticas",
+  "Governança"
 ] as const;
 
 export type Sector = typeof SECTORS[number];
@@ -381,6 +382,46 @@ export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
       requirements: ["impacto oceânico", "base científica", "monitoramento"],
       contact_info: "www.oceanfdn.org"
     }
+  ],
+  "Governança": [
+    {
+      name: "Banco Nacional de Desenvolvimento Econômico e Social (BNDES)",
+      type: "público",
+      typical_amount: { min: 500000, max: 10000000 },
+      focus: ["Fortalecimento institucional", "Modernização da gestão pública", "Governança"],
+      requirements: [
+        "Projeto de fortalecimento institucional",
+        "Contrapartida municipal",
+        "Plano de capacitação",
+        "Indicadores de governança"
+      ],
+      contact_info: "bndes.gov.br - Área de Desenvolvimento Institucional"
+    },
+    {
+      name: "Programa das Nações Unidas para o Desenvolvimento (PNUD)",
+      type: "multilateral",
+      typical_amount: { min: 100000, max: 2000000 },
+      focus: ["Governança democrática", "Participação social", "Transparência"],
+      requirements: [
+        "Foco em desenvolvimento humano",
+        "Participação social",
+        "Componente de gênero",
+        "Monitoramento participativo"
+      ],
+      contact_info: "undp.org - Escritório Brasil"
+    },
+    {
+      name: "Fundação Ford",
+      type: "filantrópico", 
+      typical_amount: { min: 50000, max: 500000 },
+      focus: ["Justiça social", "Democracia participativa", "Direitos humanos"],
+      requirements: [
+        "Foco em justiça social",
+        "Participação de grupos vulneráveis",
+        "Impacto social mensurável",
+        "Sustentabilidade do projeto"
+      ]
+    }
   ]
 };
 
@@ -616,6 +657,41 @@ export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
       expertise: ["soluções baseadas na natureza", "economia azul", "adaptação costeira"],
       location: "Gland, Suíça (atuação global)",
       previous_projects: ["Blue Solutions Showcase", "Coastal Resilience"]
+    }
+  ],
+  "Governança": [
+    {
+      name: "Fundação Getulio Vargas (FGV)",
+      type: "universidade",
+      location: "São Paulo, SP",
+      expertise: ["Gestão pública", "Políticas públicas", "Governança"],
+      previous_projects: [
+        "Modernização da gestão municipal",
+        "Sistemas de transparência pública",
+        "Capacitação de gestores públicos"
+      ]
+    },
+    {
+      name: "Instituto de Pesquisa Econômica Aplicada (IPEA)",
+      type: "instituto_pesquisa",
+      location: "Brasília, DF", 
+      expertise: ["Políticas públicas", "Avaliação de programas", "Planejamento governamental"],
+      previous_projects: [
+        "Avaliação de políticas climáticas",
+        "Indicadores de governança",
+        "Estudos de impacto social"
+      ]
+    },
+    {
+      name: "Transparência Internacional Brasil",
+      type: "ong",
+      location: "São Paulo, SP",
+      expertise: ["Transparência", "Combate à corrupção", "Accountability"],
+      previous_projects: [
+        "Sistemas de transparência municipal",
+        "Capacitação em integridade pública",
+        "Controle social de políticas públicas"
+      ]
     }
   ]
 };
