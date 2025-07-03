@@ -73,6 +73,51 @@ export interface TechnicalPartner {
   previous_projects?: string[];
 }
 
+// Core project interfaces
+export interface FirstDividend {
+  disasterRiskReduction: number;
+  infrastructureProtection: number;
+  livesProtected: number;
+}
+
+export interface SecondDividend {
+  jobsCreated: number;
+  productivityGains: number;
+  economicGrowth: number;
+  operationalEfficiency: number;
+}
+
+export interface ThirdDividend {
+  healthBenefits: number;
+  educationImpact: number;
+  biodiversityValue: number;
+  socialInclusion: number;
+}
+
+export interface ClimateProject {
+  id: string;
+  name: string;
+  sector: string;
+  description: string;
+  investment: number;
+  timeline: number;
+  region: string;
+  firstDividend: FirstDividend;
+  secondDividend: SecondDividend;
+  thirdDividend: ThirdDividend;
+}
+
+export interface DividendCalculation {
+  total: number;
+  breakdown: {
+    firstDividend: number;
+    secondDividend: number;
+    thirdDividend: number;
+  };
+  roi: number;
+  annualReturn: number;
+}
+
 export const FINANCING_SOURCES: Record<Sector, FinancingSource[]> = {
   "Agricultura e Recursos Hídricos": [
     {
