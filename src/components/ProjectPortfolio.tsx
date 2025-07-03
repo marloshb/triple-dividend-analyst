@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { adaptiveProjects } from "@/data/adaptiveProjects";
+import { AdaptiveProjectTemplate } from "@/types/climate";
 import { formatCurrency } from "@/utils/climateCalculations";
 import { 
   Briefcase, TrendingUp, DollarSign, Calendar,
@@ -17,7 +18,7 @@ interface ProjectPhase {
   name: string;
   duration: number;
   budget: number;
-  projects: any[];
+  projects: AdaptiveProjectTemplate[];
   dependencies: string[];
 }
 
@@ -33,7 +34,7 @@ interface Portfolio {
 }
 
 export function ProjectPortfolio() {
-  const [selectedProjects, setSelectedProjects] = useState<any[]>([]);
+  const [selectedProjects, setSelectedProjects] = useState<AdaptiveProjectTemplate[]>([]);
   const [portfolio, setPortfolio] = useState<Portfolio | null>(null);
 
   const allProjects = Object.values(adaptiveProjects).flat();
@@ -94,7 +95,7 @@ export function ProjectPortfolio() {
     });
   };
 
-  const toggleProjectSelection = (project: any) => {
+  const toggleProjectSelection = (project: AdaptiveProjectTemplate) => {
     setSelectedProjects(prev => {
       const isSelected = prev.some(p => p.id === project.id);
       if (isSelected) {

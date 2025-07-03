@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
 import { adaptiveProjects } from "@/data/adaptiveProjects";
-import { SECTORS, Sector } from "@/types/climate";
+import { SECTORS, Sector, AdaptiveProjectTemplate } from "@/types/climate";
 import { formatCurrency } from "@/utils/climateCalculations";
 import { 
   MapPin, Zap, DollarSign, AlertTriangle, 
@@ -28,7 +28,7 @@ interface LocalProfile {
 }
 
 interface ProjectRecommendation {
-  project: any;
+  project: AdaptiveProjectTemplate;
   priority_score: number;
   urgency: 'baixa' | 'média' | 'alta' | 'crítica';
   feasibility: number;
