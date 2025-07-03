@@ -5,6 +5,7 @@ import { ProjectCalculator } from "@/components/ProjectCalculator";
 import { ProjectLibrary } from "@/components/ProjectLibrary";
 import { LocalPriorityAnalyzer } from "@/components/LocalPriorityAnalyzer";
 import { ProjectPortfolio } from "@/components/ProjectPortfolio";
+import { GeoAILayout } from "@/components/geoai/GeoAILayout";
 import { GovernanceMainPanel } from "@/components/governance/GovernanceMainPanel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ClimateProject } from "@/types/climate";
@@ -33,11 +34,12 @@ const Index = () => {
       
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="calculator" className="w-full">
-          <TabsList className="grid w-full grid-cols-5 mb-8">
+          <TabsList className="grid w-full grid-cols-6 mb-8">
             <TabsTrigger value="calculator">💰 Calculadora</TabsTrigger>
             <TabsTrigger value="library">📚 Biblioteca</TabsTrigger>
             <TabsTrigger value="analysis">🎯 Análise Local</TabsTrigger>
             <TabsTrigger value="portfolio">📊 Portfólio</TabsTrigger>
+            <TabsTrigger value="geoai">🗺️ GeoIA</TabsTrigger>
             <TabsTrigger value="governance">🏛️ Governança</TabsTrigger>
           </TabsList>
 
@@ -55,6 +57,10 @@ const Index = () => {
 
           <TabsContent value="portfolio">
             <ProjectPortfolio />
+          </TabsContent>
+
+          <TabsContent value="geoai">
+            <GeoAILayout user={userProfile} />
           </TabsContent>
 
           <TabsContent value="governance">
