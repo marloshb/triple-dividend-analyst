@@ -13,7 +13,9 @@ import {
   Search, BookOpen, TrendingUp, Shield, Heart, 
   DollarSign, Users, Zap, Building, Leaf, 
   Calculator, Award, Target, Globe, Sun, Wind, Battery,
-  Car, Bike, Bus, Truck, BarChart3
+  Car, Bike, Bus, Truck, BarChart3, Plane, Camera,
+  Monitor, Wifi, Smartphone, AlertTriangle, GraduationCap,
+  Palette, ShoppingCart, Pickaxe, Home, Factory
 } from "lucide-react";
 
 export function ProjectLibrary() {
@@ -58,7 +60,17 @@ export function ProjectLibrary() {
       "Saúde e Bem Estar": Heart,
       "Governança e Finanças Climáticas": DollarSign,
       "Finanças Climáticas": DollarSign,
-      "Governança": Building
+      "Governança": Building,
+      "Turismo Sustentável": Camera,
+      "Tecnologia da Informação e Comunicação (TIC)": Monitor,
+      "Segurança Pública e Defesa Civil": AlertTriangle,
+      "Educação Formal e Informal": GraduationCap,
+      "Cultura e Patrimônio Histórico": Palette,
+      "Comércio e Serviços": ShoppingCart,
+      "Mineração e Recursos Naturais": Pickaxe,
+      "Mobilidade Urbana e Transporte Público": Bus,
+      "Habitação Social e Desenvolvimento Comunitário": Home,
+      "Indústria e Manufatura": Factory
     };
     return icons[sector] || Globe;
   };
@@ -106,6 +118,56 @@ export function ProjectLibrary() {
       "Participação Social, Inclusão e Controle Social": Users,
       "Coordenação Interinstitucional e Governança Multinível": Target,
       "Monitoramento, Indicadores e Transparência": BarChart3,
+      
+      // New category icons for new sectors
+      "Infraestrutura Turística Resiliente": Building,
+      "Gestão Ambiental no Turismo": Leaf,
+      "Turismo Comunitário e Ecoturismo": Users,
+      "Tecnologia e Monitoramento": Monitor,
+      
+      "Sistemas de Monitoramento e Alerta": AlertTriangle,
+      "Inteligência Artificial e Análise de Dados": Monitor,
+      "Plataformas Digitais e Aplicações": Smartphone,
+      "Tecnologias Emergentes": Wifi,
+      
+      "Sistemas de Alerta e Resposta": AlertTriangle,
+      "Capacitação e Treinamento": GraduationCap,
+      "Preparação Comunitária": Users,
+      
+      "Educação Formal Climática": GraduationCap,
+      "Capacitação de Educadores": Users,
+      "Educação Comunitária": Users,
+      "Tecnologia Educacional": Monitor,
+      
+      "Preservação Digital e Documentação": Monitor,
+      "Restauração Adaptativa": Building,
+      "Gestão de Riscos Patrimoniais": Shield,
+      "Educação e Sensibilização Cultural": Palette,
+      
+      "Eficiência e Sustentabilidade Empresarial": Target,
+      "Tecnologia e Inovação Empresarial": Monitor,
+      "Capacitação e Gestão de Riscos": Shield,
+      "Economia Circular e Sustentabilidade": Globe,
+      
+      "Monitoramento e Gestão Ambiental": Monitor,
+      "Tecnologias Limpas e Eficiência": Zap,
+      "Recuperação e Restauração": Leaf,
+      "Gestão de Riscos e Contingência": Shield,
+      
+      "Transporte Público Resiliente": Bus,
+      "Mobilidade Ativa e Sustentável": Bike,
+      "Tecnologia e Gestão Inteligente": Monitor,
+      "Infraestrutura de Apoio": Building,
+      
+      "Construção Resiliente": Home,
+      "Infraestrutura Comunitária": Building,
+      "Desenvolvimento Comunitário": Users,
+      "Financiamento e Políticas Habitacionais": DollarSign,
+      
+      "Eficiência e Sustentabilidade Industrial": Factory,
+      "Gestão de Riscos Industriais": Shield,
+      "Tecnologias Limpas e Inovação": Zap,
+      "Economia Circular Industrial": Globe
     };
     return categoryIcons[category] || Globe;
   };

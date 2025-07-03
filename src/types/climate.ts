@@ -1,129 +1,4 @@
-export interface ClimateProject {
-  id: string;
-  name: string;
-  sector: string;
-  description: string;
-  investment: number;
-  timeline: number; // years
-  region: string;
-  
-  // Triple Dividend calculations
-  firstDividend: {
-    disasterRiskReduction: number;
-    infrastructureProtection: number;
-    livesProtected: number;
-  };
-  
-  secondDividend: {
-    jobsCreated: number;
-    productivityGains: number;
-    economicGrowth: number;
-    operationalEfficiency: number;
-  };
-  
-  thirdDividend: {
-    healthBenefits: number;
-    educationImpact: number;
-    biodiversityValue: number;
-    socialInclusion: number;
-  };
-}
-
-export interface DividendCalculation {
-  total: number;
-  breakdown: {
-    firstDividend: number;
-    secondDividend: number;
-    thirdDividend: number;
-  };
-  roi: number;
-  annualReturn: number;
-}
-
-export interface FinancingSource {
-  name: string;
-  type: 'público' | 'privado' | 'multilateral' | 'cooperativo' | 'filantrópico';
-  focus: string[];
-  typical_amount: {
-    min: number;
-    max: number;
-  };
-  requirements: string[];
-  contact_info?: string;
-}
-
-export interface TechnicalPartner {
-  name: string;
-  type: 'universidade' | 'instituto_pesquisa' | 'ong' | 'empresa_consultoria' | 'organismo_internacional';
-  expertise: string[];
-  location: string;
-  previous_projects?: string[];
-}
-
-export interface EconomicAnalysis {
-  implementation_cost: {
-    total: number;
-    breakdown: {
-      equipment: number;
-      installation: number;
-      training: number;
-      monitoring: number;
-    };
-  };
-  operational_cost_annual: number;
-  revenue_potential: {
-    direct: number;
-    indirect: number;
-    co_benefits: number;
-  };
-  payback_period: number; // anos
-  net_present_value: number;
-  scalability: {
-    potential: 'baixo' | 'médio' | 'alto';
-    barriers: string[];
-    enablers: string[];
-  };
-}
-
-export interface AdaptiveProjectTemplate {
-  id: string;
-  name: string;
-  sector: string;
-  category: string;
-  description: string;
-  typicalInvestment: {
-    min: number;
-    max: number;
-  };
-  expectedBenefits: {
-    first: string[];
-    second: string[];
-    third: string[];
-  };
-  implementationTime: {
-    min: number;
-    max: number;
-  };
-  riskReduction: number; // percentage
-  economicMultiplier: number;
-  socialImpact: number;
-  
-  // Novas propriedades para análise completa
-  economicAnalysis?: EconomicAnalysis;
-  financingSources?: FinancingSource[];
-  technicalPartners?: TechnicalPartner[];
-  
-  // Métricas adicionais
-  co2_reduction?: number; // toneladas CO2 eq/ano
-  jobs_created?: number;
-  people_benefited?: number;
-  success_cases?: {
-    location: string;
-    year: number;
-    results: string;
-    lessons_learned: string;
-  }[];
-}
+import { ReactNode } from "react";
 
 export const SECTORS = [
   "Agricultura e Recursos Hídricos",
@@ -133,565 +8,591 @@ export const SECTORS = [
   "Infraestrutura de Energia",
   "Transportes Resilientes",
   "Ambiente Social e Educação",
-  "Engenharia Costeira e Pesca", 
+  "Engenharia Costeira e Pesca",
   "Saúde e Bem Estar",
-  "Governança e Finanças Climáticas",
+  "Governança",
   "Finanças Climáticas",
-  "Governança"
+  "Turismo Sustentável",
+  "Tecnologia da Informação e Comunicação (TIC)",
+  "Segurança Pública e Defesa Civil",
+  "Educação Formal e Informal",
+  "Cultura e Patrimônio Histórico",
+  "Comércio e Serviços",
+  "Mineração e Recursos Naturais",
+  "Mobilidade Urbana e Transporte Público",
+  "Habitação Social e Desenvolvimento Comunitário",
+  "Indústria e Manufatura"
 ] as const;
 
 export type Sector = typeof SECTORS[number];
 
-// Dados de financiamento e parceiros técnicos por setor
-export const FINANCING_SOURCES: Record<string, FinancingSource[]> = {
+export interface InvestmentRange {
+  min: number;
+  max: number;
+}
+
+export interface ExpectedBenefits {
+  first: string[];
+  second: string[];
+  third: string[];
+}
+
+export interface ImplementationTime {
+  min: number; // in months
+  max: number; // in months
+}
+
+export interface AdaptiveProjectTemplate {
+  id: string;
+  name: string;
+  sector: Sector | string;
+  category: string;
+  description: string;
+  typicalInvestment: InvestmentRange;
+  expectedBenefits: ExpectedBenefits;
+  implementationTime: ImplementationTime;
+  riskReduction: number; // percentage
+  economicMultiplier: number; // ROI multiplier
+  socialImpact: number; // scale 0-5
+}
+
+export interface FinancingSource {
+  name: string;
+  type: "público" | "privado" | "multilateral" | "organismo_internacional";
+  typical_amount: InvestmentRange;
+  focus: string[];
+  requirements: string[];
+  contact_info?: string;
+}
+
+export interface TechnicalPartner {
+  name: string;
+  type: "universidade" | "instituto_pesquisa" | "organismo_publico" | "ong" | "empresa" | "consultoria";
+  location: string;
+  expertise: string[];
+  previous_projects?: string[];
+}
+
+export const FINANCING_SOURCES: Record<Sector, FinancingSource[]> = {
   "Agricultura e Recursos Hídricos": [
     {
-      name: "PRONAF - Programa Nacional de Fortalecimento da Agricultura Familiar",
+      name: "Programa ABC - Agricultura de Baixa Emissão de Carbono",
       type: "público",
-      focus: ["agricultura familiar", "irrigação", "sustentabilidade"],
-      typical_amount: { min: 50000, max: 500000 },
-      requirements: ["DAP válida", "projeto técnico", "licenças ambientais"],
-      contact_info: "Banco do Brasil, Caixa Econômica Federal"
-    },
-    {
-      name: "Banco Mundial - Climate Investment Funds",
-      type: "multilateral",
-      focus: ["adaptação climática", "agricultura resiliente", "recursos hídricos"],
-      typical_amount: { min: 1000000, max: 50000000 },
-      requirements: ["projeto nacional", "co-financiamento", "impacto demonstrável"]
-    },
-    {
-      name: "CAF - Banco de Desenvolvimento da América Latina",
-      type: "multilateral",
-      focus: ["infraestrutura verde", "segurança hídrica", "adaptação"],
-      typical_amount: { min: 500000, max: 20000000 },
-      requirements: ["viabilidade técnica", "sustentabilidade financeira", "impacto regional"]
+      typical_amount: { min: 100000, max: 2000000 },
+      focus: ["Agricultura sustentável", "Redução de emissões", "Capacitação rural"],
+      requirements: ["Projeto técnico", "Viabilidade econômica", "Regularidade fiscal"]
     }
   ],
   "Florestas e Ecossistemas": [
     {
       name: "Fundo Amazônia",
-      type: "público",
-      focus: ["conservação florestal", "uso sustentável", "restauração"],
-      typical_amount: { min: 100000, max: 10000000 },
-      requirements: ["projeto na Amazônia Legal", "impacto ambiental positivo", "participação social"]
-    },
+      type: "multilateral",
+      typical_amount: { min: 500000, max: 10000000 },
+      focus: ["Conservação florestal", "Redução de desmatamento", "Projetos comunitários"],
+      requirements: ["Projeto aprovado", "Monitoramento ambiental", "Participação comunitária"]
+    }
+  ],
+  "Infraestrutura e Urbanismo": [
     {
-      name: "Conservação Internacional",
-      type: "filantrópico",
-      focus: ["biodiversidade", "serviços ecossistêmicos", "comunidades"],
-      typical_amount: { min: 50000, max: 2000000 },
-      requirements: ["conservação comprovada", "envolvimento comunitário", "monitoramento"]
+      name: "Banco Nacional de Desenvolvimento Econômico e Social (BNDES)",
+      type: "público",
+      typical_amount: { min: 1000000, max: 50000000 },
+      focus: ["Infraestrutura urbana", "Resiliência climática", "Saneamento"],
+      requirements: ["Projeto estruturado", "Viabilidade técnica", "Licenciamento ambiental"]
+    }
+  ],
+  "Saneamento e Saúde Pública": [
+    {
+      name: "Fundo Nacional de Saúde",
+      type: "público",
+      typical_amount: { min: 500000, max: 10000000 },
+      focus: ["Saneamento básico", "Saúde pública", "Prevenção de doenças"],
+      requirements: ["Projeto de saúde pública", "Capacidade operacional", "Impacto social"]
     }
   ],
   "Infraestrutura de Energia": [
     {
-      name: "FINEP - Financiadora de Estudos e Projetos",
+      name: "Programa de Incentivo às Fontes Alternativas de Energia (Proinfa)",
       type: "público",
-      focus: ["energia renovável", "eficiência energética", "inovação"],
-      typical_amount: { min: 500000, max: 10000000 },
-      requirements: ["projeto inovador", "contrapartida", "viabilidade técnica"],
-      contact_info: "www.finep.gov.br"
-    },
-    {
-      name: "BNDES Finem Energia",
-      type: "público",
-      focus: ["energia solar", "energia eólica", "smart grids"],
-      typical_amount: { min: 1000000, max: 100000000 },
-      requirements: ["análise técnica", "garantias", "licenciamento ambiental"],
-      contact_info: "BNDES - Linha Energia"
-    },
-    {
-      name: "BID - Banco Interamericano de Desenvolvimento",
-      type: "multilateral",
-      focus: ["energia limpa", "redes inteligentes", "armazenamento"],
-      typical_amount: { min: 5000000, max: 200000000 },
-      requirements: ["projeto regional", "sustentabilidade", "impacto social"],
-      contact_info: "www.iadb.org"
-    },
-    {
-      name: "GEF - Global Environment Facility",
-      type: "multilateral",
-      focus: ["energia renovável rural", "acesso à energia", "mudanças climáticas"],
-      typical_amount: { min: 1000000, max: 50000000 },
-      requirements: ["benefício global", "co-financiamento", "capacitação local"]
+      typical_amount: { min: 1000000, max: 20000000 },
+      focus: ["Energia renovável", "Eficiência energética", "Redução de emissões"],
+      requirements: ["Projeto energético", "Viabilidade técnica", "Licenciamento ambiental"]
     }
   ],
   "Transportes Resilientes": [
     {
-      name: "BNDES Mobilidade Urbana",
+      name: "Programa de Mobilidade Urbana Sustentável",
       type: "público",
-      focus: ["transporte sustentável", "infraestrutura viária", "mobilidade resiliente"],
-      typical_amount: { min: 5000000, max: 200000000 },
-      requirements: ["projeto executivo", "licenciamento ambiental", "viabilidade técnica"],
-      contact_info: "BNDES - Linha Mobilidade Urbana"
-    },
-    {
-      name: "Ministério das Cidades",
-      type: "público",
-      focus: ["infraestrutura urbana", "transporte coletivo", "ciclovias"],
-      typical_amount: { min: 1000000, max: 50000000 },
-      requirements: ["contrapartida municipal", "projeto aprovado", "capacidade técnica"]
-    },
-    {
-      name: "BID Invest - Infraestrutura Resiliente",
-      type: "multilateral",
-      focus: ["infraestrutura climática", "transporte limpo", "tecnologia IoT"],
-      typical_amount: { min: 10000000, max: 500000000 },
-      requirements: ["impacto climático", "sustentabilidade financeira", "governança"]
-    }
-  ],
-  "Saúde e Bem Estar": [
-    {
-      name: "Ministério da Saúde - SUS",
-      type: "público",
-      focus: ["atenção básica", "vigilância em saúde", "infraestrutura resiliente"],
-      typical_amount: { min: 100000, max: 5000000 },
-      requirements: ["projeto executivo", "contrapartida municipal", "aprovação do conselho de saúde"],
-      contact_info: "Fundo Nacional de Saúde"
-    },
-    {
-      name: "OPAS - Organização Pan-Americana da Saúde",
-      type: "multilateral",
-      focus: ["saúde pública", "emergências sanitárias", "adaptação climática"],
-      typical_amount: { min: 200000, max: 10000000 },
-      requirements: ["projeto regional", "impacto em saúde pública", "sustentabilidade"]
-    },
-    {
-      name: "Fundação Gates",
-      type: "filantrópico",
-      focus: ["saúde global", "tecnologias inovadoras", "populações vulneráveis"],
-      typical_amount: { min: 500000, max: 50000000 },
-      requirements: ["inovação comprovada", "impacto mensurável", "escalabilidade"]
-    },
-    {
-      name: "BNDES Social",
-      type: "público",
-      focus: ["infraestrutura social", "saúde pública", "projetos socioambientais"],
-      typical_amount: { min: 1000000, max: 100000000 },
-      requirements: ["viabilidade técnica", "impacto social", "sustentabilidade financeira"]
-    }
-  ],
-  "Finanças Climáticas": [
-    {
-      name: "BNDES - Fundo Clima",
-      type: "público",
-      focus: ["financiamento climático", "instrumentos financeiros verdes", "fundos de adaptação"],
-      typical_amount: { min: 5000000, max: 500000000 },
-      requirements: ["projeto estruturado", "análise de risco climático", "governança transparente"],
-      contact_info: "BNDES - Área de Meio Ambiente"
-    },
-    {
-      name: "Green Climate Fund (GCF)",
-      type: "multilateral",
-      focus: ["transformação climática", "instrumentos financeiros inovadores", "capacitação institutional"],
-      typical_amount: { min: 10000000, max: 250000000 },
-      requirements: ["entidade acreditada", "teoria da mudança robusta", "impacto transformacional"]
-    },
-    {
-      name: "BID Lab - Laboratório de Inovação",
-      type: "multilateral", 
-      focus: ["inovação financeira", "instrumentos de mercado", "fintech climática"],
-      typical_amount: { min: 500000, max: 5000000 },
-      requirements: ["inovação comprovada", "escalabilidade", "sustentabilidade financeira"]
-    },
-    {
-      name: "Climate Policy Initiative (CPI)",
-      type: "filantrópico",
-      focus: ["análise de políticas", "instrumentos financeiros", "capacitação técnica"],
-      typical_amount: { min: 200000, max: 2000000 },
-      requirements: ["relevância política", "base de evidências", "potencial de replicação"]
+      typical_amount: { min: 2000000, max: 50000000 },
+      focus: ["Transporte público", "Mobilidade sustentável", "Infraestrutura resiliente"],
+      requirements: ["Plano de mobilidade", "Viabilidade técnica", "Participação social"]
     }
   ],
   "Ambiente Social e Educação": [
     {
-      name: "Fundo Nacional de Desenvolvimento da Educação (FNDE)",
+      name: "Programa Nacional de Educação Ambiental",
       type: "público",
-      typical_amount: { min: 10000, max: 500000 },
-      focus: ["Educação ambiental", "Infraestrutura escolar", "Formação continuada"],
-      requirements: [
-        "Projeto pedagógico aprovado",
-        "Contrapartida municipal",
-        "Prestação de contas regular"
-      ],
-      contact_info: "www.fnde.gov.br"
-    },
-    {
-      name: "Instituto Arapyaú",
-      type: "filantrópico",
-      typical_amount: { min: 25000, max: 200000 },
-      focus: ["Educação para sustentabilidade", "Inovação social", "Tecnologias sociais"],
-      requirements: [
-        "Impacto social mensurável",
-        "Sustentabilidade do projeto",
-        "Articulação territorial"
-      ],
-      contact_info: "contato@arapyau.org.br"
-    },
-    {
-      name: "Programa Criança Esperança - UNESCO",
-      type: "multilateral",
-      typical_amount: { min: 15000, max: 150000 },
-      focus: ["Educação integral", "Proteção social", "Participação juvenil"],
-      requirements: [
-        "Foco em crianças e adolescentes",
-        "Metodologia participativa",
-        "Sustentabilidade social"
-      ],
-      contact_info: "brasilia@unesco.org"
+      typical_amount: { min: 300000, max: 3000000 },
+      focus: ["Educação ambiental", "Capacitação", "Inclusão social"],
+      requirements: ["Projeto educacional", "Capacidade institucional", "Impacto social"]
     }
   ],
   "Engenharia Costeira e Pesca": [
     {
-      name: "Ministério da Pesca e Aquicultura",
+      name: "Fundo de Desenvolvimento da Pesca e Aquicultura",
       type: "público",
-      focus: ["pesca artesanal", "aquicultura sustentável", "infraestrutura pesqueira"],
       typical_amount: { min: 500000, max: 10000000 },
-      requirements: ["projeto técnico", "licenciamento ambiental", "organização social"],
-      contact_info: "Secretaria Nacional de Pesca e Aquicultura"
-    },
+      focus: ["Pesca sustentável", "Aquicultura", "Proteção costeira"],
+      requirements: ["Projeto técnico", "Viabilidade econômica", "Licenciamento ambiental"]
+    }
+  ],
+  "Saúde e Bem Estar": [
     {
-      name: "Ministério do Meio Ambiente - Fundo Nacional do Meio Ambiente",
+      name: "Ministério da Saúde - Programas de Saúde Pública",
       type: "público",
-      focus: ["conservação costeira", "unidades de conservação", "educação ambiental"],
-      typical_amount: { min: 100000, max: 5000000 },
-      requirements: ["projeto socioambiental", "contrapartida", "prestação de contas"],
-      contact_info: "FNMA - Fundo Nacional do Meio Ambiente"
-    },
-    {
-      name: "Banco Mundial - Blue Economy Program",
-      type: "multilateral",
-      focus: ["economia azul", "pesca sustentável", "conservação marinha"],
-      typical_amount: { min: 5000000, max: 100000000 },
-      requirements: ["projeto nacional", "impacto transformacional", "co-financiamento"],
-      contact_info: "www.worldbank.org/blueconomy"
-    },
-    {
-      name: "FAO - Organização das Nações Unidas para Alimentação e Agricultura",
-      type: "multilateral",
-      focus: ["segurança alimentar", "pesca responsável", "aquicultura"],
-      typical_amount: { min: 200000, max: 8000000 },
-      requirements: ["foco em vulnerabilidade", "participação comunitária", "sustentabilidade"],
-      contact_info: "fao-br@fao.org"
-    },
-    {
-      name: "Ocean Foundation",
-      type: "filantrópico",
-      focus: ["conservação oceânica", "comunidades costeiras", "pesquisa marinha"],
-      typical_amount: { min: 50000, max: 2000000 },
-      requirements: ["impacto oceânico", "base científica", "monitoramento"],
-      contact_info: "www.oceanfdn.org"
+      typical_amount: { min: 500000, max: 10000000 },
+      focus: ["Saúde pública", "Prevenção de doenças", "Capacitação"],
+      requirements: ["Projeto de saúde", "Capacidade operacional", "Impacto social"]
     }
   ],
   "Governança": [
     {
-      name: "Banco Nacional de Desenvolvimento Econômico e Social (BNDES)",
+      name: "Programa de Fortalecimento da Gestão Pública",
       type: "público",
-      typical_amount: { min: 500000, max: 10000000 },
-      focus: ["Fortalecimento institucional", "Modernização da gestão pública", "Governança"],
-      requirements: [
-        "Projeto de fortalecimento institucional",
-        "Contrapartida municipal",
-        "Plano de capacitação",
-        "Indicadores de governança"
-      ],
-      contact_info: "bndes.gov.br - Área de Desenvolvimento Institucional"
+      typical_amount: { min: 300000, max: 5000000 },
+      focus: ["Governança climática", "Capacitação", "Transparência"],
+      requirements: ["Plano de gestão", "Capacidade institucional", "Participação social"]
+    }
+  ],
+  "Finanças Climáticas": [
+    {
+      name: "Fundo Clima",
+      type: "público",
+      typical_amount: { min: 1000000, max: 20000000 },
+      focus: ["Financiamento climático", "Mitigação", "Adaptação"],
+      requirements: ["Projeto climático", "Viabilidade técnica", "Impacto ambiental"]
+    }
+  ],
+  "Turismo Sustentável": [
+    {
+      name: "Fundo Nacional de Turismo (Fungetur)",
+      type: "público",
+      typical_amount: { min: 500000, max: 5000000 },
+      focus: ["Infraestrutura turística", "Sustentabilidade", "Capacitação"],
+      requirements: ["Projeto de desenvolvimento turístico", "Impacto socioambiental positivo", "Viabilidade técnica"]
     },
     {
-      name: "Programa das Nações Unidas para o Desenvolvimento (PNUD)",
+      name: "Banco Interamericano de Desenvolvimento - Turismo Sustentável",
       type: "multilateral",
-      typical_amount: { min: 100000, max: 2000000 },
-      focus: ["Governança democrática", "Participação social", "Transparência"],
-      requirements: [
-        "Foco em desenvolvimento humano",
-        "Participação social",
-        "Componente de gênero",
-        "Monitoramento participativo"
-      ],
-      contact_info: "undp.org - Escritório Brasil"
+      typical_amount: { min: 2000000, max: 50000000 },
+      focus: ["Ecoturismo", "Turismo comunitário", "Infraestrutura resiliente"],
+      requirements: ["Projeto de grande escala", "Sustentabilidade comprovada", "Participação comunitária"]
+    }
+  ],
+  "Tecnologia da Informação e Comunicação (TIC)": [
+    {
+      name: "FINEP - Inovação Digital",
+      type: "público",
+      typical_amount: { min: 1000000, max: 10000000 },
+      focus: ["Inovação tecnológica", "Soluções digitais", "IoT e sensores"],
+      requirements: ["Projeto de inovação", "Capacidade técnica", "Impacto tecnológico"]
     },
     {
-      name: "Fundação Ford",
-      type: "filantrópico", 
+      name: "Fundo Verde do Clima - Tecnologia",
+      type: "multilateral",
+      typical_amount: { min: 5000000, max: 100000000 },
+      focus: ["Tecnologias climáticas", "Sistemas de monitoramento", "Adaptação digital"],
+      requirements: ["Projeto transformacional", "Tecnologia inovadora", "Escala nacional"]
+    }
+  ],
+  "Segurança Pública e Defesa Civil": [
+    {
+      name: "Ministério da Integração e Desenvolvimento Regional",
+      type: "público",
+      typical_amount: { min: 2000000, max: 20000000 },
+      focus: ["Defesa civil", "Gestão de riscos", "Infraestrutura de emergência"],
+      requirements: ["Plano de defesa civil", "Capacidade operacional", "Articulação institucional"]
+    },
+    {
+      name: "Banco Mundial - Gestão de Riscos de Desastres",
+      type: "multilateral",
+      typical_amount: { min: 10000000, max: 200000000 },
+      focus: ["Prevenção de desastres", "Sistemas de alerta", "Resiliência urbana"],
+      requirements: ["Estratégia nacional", "Capacidade institucional", "Impacto de larga escala"]
+    }
+  ],
+  "Educação Formal e Informal": [
+    {
+      name: "FNDE - Fundo Nacional de Desenvolvimento da Educação",
+      type: "público",
+      typical_amount: { min: 500000, max: 5000000 },
+      focus: ["Educação ambiental", "Capacitação docente", "Infraestrutura educacional"],
+      requirements: ["Projeto pedagógico", "Capacidade institucional", "Impacto educacional"]
+    },
+    {
+      name: "UNESCO - Educação para o Desenvolvimento Sustentável",
+      type: "multilateral",
+      typical_amount: { min: 200000, max: 2000000 },
+      focus: ["Educação ambiental", "Capacitação", "Materiais didáticos"],
+      requirements: ["Projeto educacional", "Metodologia comprovada", "Multiplicação"]
+    }
+  ],
+  "Cultura e Patrimônio Histórico": [
+    {
+      name: "IPHAN - Instituto do Patrimônio Histórico",
+      type: "público",
+      typical_amount: { min: 300000, max: 3000000 },
+      focus: ["Preservação patrimonial", "Restauração", "Documentação cultural"],
+      requirements: ["Relevância patrimonial", "Projeto técnico", "Impacto cultural"]
+    },
+    {
+      name: "Banco Mundial - Patrimônio Cultural",
+      type: "multilateral",
+      typical_amount: { min: 2000000, max: 20000000 },
+      focus: ["Preservação cultural", "Adaptação climática", "Desenvolvimento cultural"],
+      requirements: ["Significância cultural", "Viabilidade técnica", "Sustentabilidade"]
+    }
+  ],
+  "Comércio e Serviços": [
+    {
+      name: "BNDES - Cartão BNDES",
+      type: "público",
+      typical_amount: { min: 100000, max: 1000000 },
+      focus: ["Modernização comercial", "Eficiência energética", "Sustentabilidade"],
+      requirements: ["CNPJ ativo", "Capacidade de pagamento", "Projeto sustentável"]
+    },
+    {
+      name: "SEBRAE - Sustentabilidade Empresarial",
+      type: "público",
       typical_amount: { min: 50000, max: 500000 },
-      focus: ["Justiça social", "Democracia participativa", "Direitos humanos"],
-      requirements: [
-        "Foco em justiça social",
-        "Participação de grupos vulneráveis",
-        "Impacto social mensurável",
-        "Sustentabilidade do projeto"
-      ]
+      focus: ["Pequenos negócios", "Práticas sustentáveis", "Capacitação"],
+      requirements: ["Micro ou pequena empresa", "Projeto de sustentabilidade", "Capacitação"]
+    }
+  ],
+  "Mineração e Recursos Naturais": [
+    {
+      name: "BNDES - Mineração Sustentável",
+      type: "público",
+      typical_amount: { min: 10000000, max: 200000000 },
+      focus: ["Tecnologias limpas", "Recuperação ambiental", "Eficiência operacional"],
+      requirements: ["Licenciamento ambiental", "Tecnologia sustentável", "Impacto socioambiental"]
+    },
+    {
+      name: "Banco Mundial - Recursos Naturais",
+      type: "multilateral",
+      typical_amount: { min: 50000000, max: 500000000 },
+      focus: ["Gestão sustentável", "Tecnologias limpas", "Recuperação ambiental"],
+      requirements: ["Escala significativa", "Padrões internacionais", "Sustentabilidade comprovada"]
+    }
+  ],
+  "Mobilidade Urbana e Transporte Público": [
+    {
+      name: "Ministério das Cidades - Mobilidade Urbana",
+      type: "público",
+      typical_amount: { min: 5000000, max: 100000000 },
+      focus: ["Transporte público", "Mobilidade ativa", "Infraestrutura resiliente"],
+      requirements: ["Plano de mobilidade", "Impacto urbano", "Sustentabilidade"]
+    },
+    {
+      name: "BID - Transporte Sustentável",
+      type: "multilateral",
+      typical_amount: { min: 20000000, max: 300000000 },
+      focus: ["BRT", "Mobilidade elétrica", "Infraestrutura verde"],
+      requirements: ["Projeto estruturante", "Sustentabilidade", "Impacto regional"]
+    }
+  ],
+  "Habitação Social e Desenvolvimento Comunitário": [
+    {
+      name: "Minha Casa Minha Vida",
+      type: "público",
+      typical_amount: { min: 10000000, max: 200000000 },
+      focus: ["Habitação popular", "Infraestrutura social", "Desenvolvimento urbano"],
+      requirements: ["Faixa de renda", "Projeto habitacional", "Regularização fundiária"]
+    },
+    {
+      name: "Banco Mundial - Habitação",
+      type: "multilateral",
+      typical_amount: { min: 50000000, max: 1000000000 },
+      focus: ["Habitação resiliente", "Desenvolvimento urbano", "Inclusão social"],
+      requirements: ["Escala urbana", "Sustentabilidade", "Impacto social"]
+    }
+  ],
+  "Indústria e Manufatura": [
+    {
+      name: "BNDES - Indústria Sustentável",
+      type: "público",
+      typical_amount: { min: 5000000, max: 100000000 },
+      focus: ["Modernização industrial", "Eficiência energética", "Tecnologias limpas"],
+      requirements: ["Setor industrial", "Inovação tecnológica", "Sustentabilidade"]
+    },
+    {
+      name: "BID - Competitividade Industrial",
+      type: "multilateral",
+      typical_amount: { min: 20000000, max: 500000000 },
+      focus: ["Indústria 4.0", "Economia circular", "Descarbonização"],
+      requirements: ["Projeto industrial", "Competitividade", "Sustentabilidade"]
     }
   ]
 };
 
-export const TECHNICAL_PARTNERS: Record<string, TechnicalPartner[]> = {
+export const TECHNICAL_PARTNERS: Record<Sector, TechnicalPartner[]> = {
   "Agricultura e Recursos Hídricos": [
     {
-      name: "EMBRAPA",
-      type: "instituto_pesquisa",
-      expertise: ["agricultura tropical", "recursos hídricos", "tecnologia agrícola"],
-      location: "Brasil (nacional)",
-      previous_projects: ["Sistema Plantio Direto", "Integração Lavoura-Pecuária-Floresta"]
-    },
-    {
-      name: "CIAT - Centro Internacional de Agricultura Tropical",
-      type: "organismo_internacional",
-      expertise: ["agricultura climática", "segurança alimentar", "sistemas resilientes"],
-      location: "Colômbia (atuação América Latina)"
-    },
-    {
-      name: "World Agroforestry Centre (ICRAF)",
-      type: "organismo_internacional",
-      expertise: ["agrofloresta", "restauração", "adaptação climática"],
-      location: "Quênia (atuação global)"
+      name: "Embrapa - Empresa Brasileira de Pesquisa Agropecuária",
+      type: "organismo_publico",
+      location: "Brasília, DF",
+      expertise: ["Agricultura sustentável", "Tecnologias agrícolas", "Pesquisa aplicada"],
+      previous_projects: ["Programa ABC", "Inovações em irrigação"]
     }
   ],
   "Florestas e Ecossistemas": [
     {
       name: "Instituto Nacional de Pesquisas da Amazônia (INPA)",
       type: "instituto_pesquisa",
-      expertise: ["ecologia tropical", "restauração florestal", "biodiversidade"],
-      location: "Manaus, Brasil"
-    },
+      location: "Manaus, AM",
+      expertise: ["Ecossistemas florestais", "Biodiversidade", "Conservação"],
+      previous_projects: ["Monitoramento da Amazônia", "Projetos de conservação"]
+    }
+  ],
+  "Infraestrutura e Urbanismo": [
     {
-      name: "WRI Brasil",
-      type: "ong",
-      expertise: ["restauração florestal", "políticas ambientais", "mudanças climáticas"],
-      location: "Brasil"
+      name: "Instituto de Pesquisa e Planejamento Urbano e Regional (IPPUR/UFRJ)",
+      type: "universidade",
+      location: "Rio de Janeiro, RJ",
+      expertise: ["Planejamento urbano", "Infraestrutura resiliente", "Sustentabilidade urbana"],
+      previous_projects: ["Planos diretores", "Projetos urbanos sustentáveis"]
+    }
+  ],
+  "Saneamento e Saúde Pública": [
+    {
+      name: "Fundação Oswaldo Cruz (Fiocruz)",
+      type: "instituto_pesquisa",
+      location: "Rio de Janeiro, RJ",
+      expertise: ["Saúde pública", "Saneamento", "Epidemiologia"],
+      previous_projects: ["Controle de doenças", "Projetos de saneamento"]
     }
   ],
   "Infraestrutura de Energia": [
     {
-      name: "CEPEL - Centro de Pesquisas de Energia Elétrica",
-      type: "instituto_pesquisa",
-      expertise: ["sistemas elétricos", "energia renovável", "smart grids"],
-      location: "Rio de Janeiro, Brasil",
-      previous_projects: ["Sistema Interligado Nacional", "Redes Inteligentes"]
-    },
-    {
-      name: "LACTEC - Instituto de Tecnologia para o Desenvolvimento",
-      type: "instituto_pesquisa",
-      expertise: ["energia solar", "energia eólica", "eficiência energética"],
-      location: "Curitiba, Brasil",
-      previous_projects: ["Atlas Solar", "Sistemas Fotovoltaicos"]
-    },
-    {
-      name: "IRENA - International Renewable Energy Agency",
-      type: "organismo_internacional",
-      expertise: ["energia renovável", "políticas energéticas", "capacitação"],
-      location: "Abu Dhabi (atuação global)",
-      previous_projects: ["Global Energy Transformation", "Renewable Energy Statistics"]
-    },
-    {
-      name: "Rocky Mountain Institute",
-      type: "ong",
-      expertise: ["transição energética", "microgrids", "armazenamento"],
-      location: "Colorado, EUA (atuação global)",
-      previous_projects: ["Islands Energy Program", "Smart Grid Demonstration"]
+      name: "Empresa de Pesquisa Energética (EPE)",
+      type: "organismo_publico",
+      location: "Brasília, DF",
+      expertise: ["Energia renovável", "Planejamento energético", "Eficiência energética"],
+      previous_projects: ["Plano Decenal de Energia", "Projetos de energia solar"]
     }
   ],
   "Transportes Resilientes": [
     {
-      name: "IPT - Instituto de Pesquisas Tecnológicas",
+      name: "Instituto de Transportes e Logística (ITL)",
       type: "instituto_pesquisa",
-      expertise: ["pavimentos", "infraestrutura viária", "materiais de construção"],
-      location: "São Paulo, Brasil",
-      previous_projects: ["Pavimentos Permeáveis", "Asfalto Ecológico"]
-    },
-    {
-      name: "COPPE/UFRJ - Programa de Engenharia de Transportes",
-      type: "universidade",
-      expertise: ["planejamento de transportes", "mobilidade urbana", "sistemas inteligentes"],
-      location: "Rio de Janeiro, Brasil"
-    },
-    {
-      name: "WRI Brasil - Cidades Sustentáveis",
-      type: "ong",
-      expertise: ["mobilidade urbana", "transporte sustentável", "planejamento urbano"],
-      location: "Brasil",
-      previous_projects: ["BRT", "Ciclovias Protegidas"]
-    },
-    {
-      name: "ITDP - Institute for Transportation & Development Policy",
-      type: "ong",
-      expertise: ["transporte sustentável", "mobilidade ativa", "BRT"],
-      location: "Nova York, EUA (atuação global)",
-      previous_projects: ["TransMilenio", "Bus Rapid Transit"]
-    }
-  ],
-  "Saúde e Bem Estar": [
-    {
-      name: "FIOCRUZ - Fundação Oswaldo Cruz",
-      type: "instituto_pesquisa",
-      expertise: ["saúde pública", "vigilância epidemiológica", "saúde ambiental"],
-      location: "Rio de Janeiro, Brasil",
-      previous_projects: ["Observatório de Clima e Saúde", "Vigiar SUS"]
-    },
-    {
-      name: "USP - Faculdade de Saúde Pública",
-      type: "universidade",
-      expertise: ["epidemiologia", "saúde ambiental", "políticas de saúde"],
-      location: "São Paulo, Brasil",
-      previous_projects: ["Estudo ELSA", "Projeto São Paulo Megacity"]
-    },
-    {
-      name: "OPAS - Organização Pan-Americana da Saúde",
-      type: "organismo_internacional",
-      expertise: ["saúde pública", "emergências sanitárias", "mudanças climáticas"],
-      location: "Washington, EUA (atuação América Latina)",
-      previous_projects: ["Saúde nas Américas", "Smart Hospitals"]
-    },
-    {
-      name: "Climate and Health Alliance",
-      type: "ong",
-      expertise: ["saúde climática", "advocacy", "políticas públicas"],
-      location: "Austrália (atuação global)",
-      previous_projects: ["Climate Health Report", "Healthy Climate Prescription"]
-    }
-  ],
-  "Finanças Climáticas": [
-    {
-      name: "Fundação Getulio Vargas (FGV) - Centro de Estudos em Sustentabilidade",
-      type: "universidade",
-      expertise: ["finanças sustentáveis", "análise de risco climático", "instrumentos financeiros"],
-      location: "São Paulo, Brasil",
-      previous_projects: ["Taxonomia Verde Brasileira", "Mercado de Títulos Verdes"]
-    },
-    {
-      name: "Climate Policy Initiative (CPI/PUC-Rio)",
-      type: "instituto_pesquisa",
-      expertise: ["política climática", "financiamento climático", "análise econômica"],
-      location: "Rio de Janeiro, Brasil",
-      previous_projects: ["Panorama do Financiamento Climático", "NDC do Brasil"]
-    },
-    {
-      name: "International Finance Corporation (IFC)",
-      type: "organismo_internacional",
-      expertise: ["financiamento privado", "mercados emergentes", "risco climático"],
-      location: "Washington, EUA (atuação global)",
-      previous_projects: ["Green Bonds Program", "Climate Investment Opportunities"]
-    },
-    {
-      name: "Climate Finance Advisors",
-      type: "empresa_consultoria",
-      expertise: ["estruturação de fundos", "captação internacional", "instrumentos financeiros"],
-      location: "Londres, Reino Unido (atuação global)",
-      previous_projects: ["Green Climate Fund Projects", "Blended Finance Structures"]
+      location: "São Paulo, SP",
+      expertise: ["Mobilidade urbana", "Transporte sustentável", "Logística"],
+      previous_projects: ["Planos de mobilidade", "Projetos de transporte público"]
     }
   ],
   "Ambiente Social e Educação": [
     {
-      name: "Instituto Paulo Freire",
+      name: "Instituto Socioambiental (ISA)",
       type: "ong",
       location: "São Paulo, SP",
-      expertise: ["Educação popular", "Pedagogia crítica", "Formação de educadores"],
-      previous_projects: [
-        "Programa de Alfabetização de Jovens e Adultos",
-        "Formação de Educadores Ambientais",
-        "Círculos de Cultura Climática"
-      ]
-    },
-    {
-      name: "Ashoka Brasil",
-      type: "ong",
-      location: "São Paulo, SP",
-      expertise: ["Empreendedorismo social", "Inovação sistêmica", "Educação transformadora"],
-      previous_projects: [
-        "Rede de Jovens Changemakers",
-        "Programa Escolas Transformadoras",
-        "Hub de Inovação Social"
-      ]
-    },
-    {
-      name: "Centro de Educação Ambiental - USP",
-      type: "universidade",
-      location: "São Paulo, SP", 
-      expertise: ["Pesquisa em educação ambiental", "Formação de professores", "Metodologias participativas"],
-      previous_projects: [
-        "Observatório de Educação Ambiental",
-        "Laboratório de Educação e Política Ambiental",
-        "Rede Brasileira de Educação Ambiental"
-      ]
+      expertise: ["Educação ambiental", "Inclusão social", "Sustentabilidade"],
+      previous_projects: ["Projetos comunitários", "Educação ambiental"]
     }
   ],
   "Engenharia Costeira e Pesca": [
     {
-      name: "Instituto de Pesquisas Hidráulicas (IPH/UFRGS)",
-      type: "universidade",
-      expertise: ["engenharia costeira", "modelagem oceânica", "erosão costeira"],
-      location: "Porto Alegre, RS",
-      previous_projects: ["Projeto Orla", "Estudos de Erosão Costeira RS"]
-    },
-    {
-      name: "Instituto de Estudos do Mar Almirante Paulo Moreira (IEAPM)",
-      type: "instituto_pesquisa",
-      expertise: ["oceanografia", "engenharia naval", "meio ambiente marinho"],
-      location: "Arraial do Cabo, RJ",
-      previous_projects: ["Programa Antártico Brasileiro", "Monitoramento Oceânico"]
-    },
-    {
-      name: "COPPE/UFRJ - Programa de Engenharia Oceânica",
-      type: "universidade",
-      expertise: ["engenharia oceânica", "estruturas marinhas", "energia offshore"],
+      name: "Instituto Nacional de Pesca (INP)",
+      type: "organismo_publico",
       location: "Rio de Janeiro, RJ",
-      previous_projects: ["Plataformas Petrolíferas", "Energia das Ondas"]
-    },
+      expertise: ["Pesca sustentável", "Engenharia costeira", "Aquicultura"],
+      previous_projects: ["Projetos de pesca sustentável", "Monitoramento costeiro"]
+    }
+  ],
+  "Saúde e Bem Estar": [
     {
-      name: "Instituto de Pesca (IP/APTA)",
-      type: "instituto_pesquisa",
-      expertise: ["recursos pesqueiros", "aquicultura", "tecnologia pesqueira"],
-      location: "Santos, SP",
-      previous_projects: ["Avaliação de Estoques Pesqueiros", "Aquicultura Marinha"]
-    },
-    {
-      name: "The Nature Conservancy Brasil",
-      type: "ong",
-      expertise: ["conservação marinha", "pesca sustentável", "áreas protegidas"],
+      name: "Ministério da Saúde - Departamento de Vigilância em Saúde",
+      type: "organismo_publico",
       location: "Brasília, DF",
-      previous_projects: ["Programa Marinho", "Conservação de Recifes"]
-    },
-    {
-      name: "Blue Solutions - IUCN",
-      type: "organismo_internacional",
-      expertise: ["soluções baseadas na natureza", "economia azul", "adaptação costeira"],
-      location: "Gland, Suíça (atuação global)",
-      previous_projects: ["Blue Solutions Showcase", "Coastal Resilience"]
+      expertise: ["Saúde pública", "Vigilância epidemiológica", "Promoção da saúde"],
+      previous_projects: ["Programas de saúde pública", "Campanhas de prevenção"]
     }
   ],
   "Governança": [
     {
-      name: "Fundação Getulio Vargas (FGV)",
+      name: "Instituto Ethos",
+      type: "ong",
+      location: "São Paulo, SP",
+      expertise: ["Governança pública", "Transparência", "Sustentabilidade"],
+      previous_projects: ["Projetos de governança", "Capacitação institucional"]
+    }
+  ],
+  "Finanças Climáticas": [
+    {
+      name: "Banco Nacional de Desenvolvimento Econômico e Social (BNDES)",
+      type: "organismo_publico",
+      location: "Rio de Janeiro, RJ",
+      expertise: ["Finanças sustentáveis", "Investimentos climáticos", "Gestão financeira"],
+      previous_projects: ["Financiamento de projetos climáticos", "Programas de crédito verde"]
+    }
+  ],
+  "Turismo Sustentável": [
+    {
+      name: "Instituto Brasileiro de Turismo (Embratur)",
+      type: "organismo_publico",
+      location: "Brasília, DF",
+      expertise: ["Desenvolvimento turístico", "Marketing de destinos", "Sustentabilidade turística"],
+      previous_projects: ["Programa de Desenvolvimento do Ecoturismo", "Roteiros do Brasil"]
+    },
+    {
+      name: "Fundação SOS Mata Atlântica",
+      type: "ong",
+      location: "São Paulo, SP", 
+      expertise: ["Ecoturismo", "Conservação", "Educação ambiental"],
+      previous_projects: ["Trilhas da Mata Atlântica", "Turismo de Base Comunitária"]
+    }
+  ],
+  "Tecnologia da Informação e Comunicação (TIC)": [
+    {
+      name: "Centro de Pesquisas Meteorológicas (CPTEC/INPE)",
+      type: "instituto_pesquisa",
+      location: "Cachoeira Paulista, SP",
+      expertise: ["Monitoramento climático", "Sistemas de alerta", "Modelagem atmosférica"],
+      previous_projects: ["Sistema de Alerta de Desastres", "Rede de Monitoramento Climático"]
+    },
+    {
+      name: "Laboratório de Sistemas Integráveis (LSI/USP)",
       type: "universidade",
       location: "São Paulo, SP",
-      expertise: ["Gestão pública", "Políticas públicas", "Governança"],
-      previous_projects: [
-        "Modernização da gestão municipal",
-        "Sistemas de transparência pública",
-        "Capacitação de gestores públicos"
-      ]
+      expertise: ["IoT", "Sensores ambientais", "Sistemas inteligentes"],
+      previous_projects: ["Cidade Inteligente Sustentável", "Rede de Sensores Ambientais"]
+    }
+  ],
+  "Segurança Pública e Defesa Civil": [
+    {
+      name: "Centro Nacional de Monitoramento e Alertas (CEMADEN)",
+      type: "organismo_publico",
+      location: "São José dos Campos, SP", 
+      expertise: ["Alertas de desastres", "Monitoramento de riscos", "Defesa civil"],
+      previous_projects: ["Sistema Nacional de Alertas", "Rede de Monitoramento Hidrometeorológico"]
+    },
+    {
+      name: "Universidade Federal de Santa Catarina - CEPED",
+      type: "universidade",
+      location: "Florianópolis, SC",
+      expertise: ["Gestão de riscos", "Defesa civil", "Resiliência urbana"],
+      previous_projects: ["Atlas de Desastres do Brasil", "Capacitação em Defesa Civil"]
+    }
+  ],
+  "Educação Formal e Informal": [
+    {
+      name: "Ministério da Educação - Coordenação de Educação Ambiental",
+      type: "organismo_publico",
+      location: "Brasília, DF",
+      expertise: ["Educação ambiental", "Políticas educacionais", "Formação docente"],
+      previous_projects: ["Programa Mais Educação Ambiental", "Salas Verdes"]
+    },
+    {
+      name: "Instituto Akatu",
+      type: "ong",
+      location: "São Paulo, SP",
+      expertise: ["Educação para sustentabilidade", "Consumo consciente", "Metodologias educativas"],
+      previous_projects: ["Edukatu", "Escola Sustentável"]
+    }
+  ],
+  "Cultura e Patrimônio Histórico": [
+    {
+      name: "Instituto do Patrimônio Histórico e Artístico Nacional (IPHAN)",
+      type: "organismo_publico",
+      location: "Brasília, DF",
+      expertise: ["Preservação patrimonial", "Restauração", "Gestão cultural"],
+      previous_projects: ["Programa Monumenta", "Patrimônio Cultural Imaterial"]
+    },
+    {
+      name: "Universidade Federal de Minas Gerais - Escola de Arquitetura",
+      type: "universidade",
+      location: "Belo Horizonte, MG",
+      expertise: ["Restauração arquitetônica", "Patrimônio cultural", "Tecnologias de preservação"],
+      previous_projects: ["Centro de Conservação e Restauração", "Inventário Cultural"]
+    }
+  ],
+  "Comércio e Serviços": [
+    {
+      name: "SEBRAE Nacional",
+      type: "organismo_publico", 
+      location: "Brasília, DF",
+      expertise: ["Desenvolvimento empresarial", "Sustentabilidade nos negócios", "Capacitação"],
+      previous_projects: ["Programa Sebrae Mais Sustentável", "Varejo Sustentável"]
+    },
+    {
+      name: "Instituto Ethos",
+      type: "ong",
+      location: "São Paulo, SP",
+      expertise: ["Responsabilidade social empresarial", "Sustentabilidade corporativa", "ESG"],
+      previous_projects: ["Indicadores Ethos", "Rede Brasil do Pacto Global"]
+    }
+  ],
+  "Mineração e Recursos Naturais": [
+    {
+      name: "Centro de Tecnologia Mineral (CETEM/MCTI)",
+      type: "instituto_pesquisa",
+      location: "Rio de Janeiro, RJ",
+      expertise: ["Tecnologia mineral", "Sustentabilidade na mineração", "Recuperação ambiental"],
+      previous_projects: ["Tecnologias Limpas para Mineração", "Recuperação de Áreas Degradadas"]
+    },
+    {
+      name: "Instituto Brasileiro de Mineração (IBRAM)",
+      type: "organismo_publico",
+      location: "Brasília, DF",
+      expertise: ["Mineração sustentável", "Gestão ambiental", "Responsabilidade social"],
+      previous_projects: ["Programa de Excelência em Mineração", "Guia de Boas Práticas"]
+    }
+  ],
+  "Mobilidade Urbana e Transporte Público": [
+    {
+      name: "Associação Nacional de Transportes Públicos (ANTP)",
+      type: "organismo_publico",
+      location: "São Paulo, SP",
+      expertise: ["Transporte público", "Mobilidade urbana", "Planejamento de transportes"],
+      previous_projects: ["Sistema de Informações da Mobilidade", "Prêmio ANTP de Qualidade"]
     },
     {
       name: "Instituto de Pesquisa Econômica Aplicada (IPEA)",
       type: "instituto_pesquisa",
+      location: "Brasília, DF",
+      expertise: ["Políticas públicas", "Mobilidade urbana", "Avaliação de impactos"],
+      previous_projects: ["Atlas da Vulnerabilidade Social", "Pesquisa Mobilidade Urbana"]
+    }
+  ],
+  "Habitação Social e Desenvolvimento Comunitário": [
+    {
+      name: "Secretaria Nacional de Habitação (SNH)",
+      type: "organismo_publico",
       location: "Brasília, DF", 
-      expertise: ["Políticas públicas", "Avaliação de programas", "Planejamento governamental"],
-      previous_projects: [
-        "Avaliação de políticas climáticas",
-        "Indicadores de governança",
-        "Estudos de impacto social"
-      ]
+      expertise: ["Políticas habitacionais", "Desenvolvimento urbano", "Habitação social"],
+      previous_projects: ["Programa Minha Casa Minha Vida", "Programa de Aceleração do Crescimento"]
     },
     {
-      name: "Transparência Internacional Brasil",
+      name: "Instituto Pólis",
       type: "ong",
       location: "São Paulo, SP",
-      expertise: ["Transparência", "Combate à corrupção", "Accountability"],
-      previous_projects: [
-        "Sistemas de transparência municipal",
-        "Capacitação em integridade pública",
-        "Controle social de políticas públicas"
-      ]
+      expertise: ["Desenvolvimento urbano", "Participação popular", "Direito à cidade"],
+      previous_projects: ["Observatório dos Direitos do Cidadão", "Rede de Avaliação e Capacitação"]
+    }
+  ],
+  "Indústria e Manufatura": [
+    {
+      name: "Confederação Nacional da Indústria (CNI)",
+      type: "organismo_publico",
+      location: "Brasília, DF",
+      expertise: ["Desenvolvimento industrial", "Sustentabilidade industrial", "Inovação tecnológica"],
+      previous_projects: ["Mapa Estratégico da Indústria", "Indústria 2027"]
+    },
+    {
+      name: "Instituto Senai de Inovação",
+      type: "instituto_pesquisa",
+      location: "Múltiplas localidades",
+      expertise: ["Inovação industrial", "Tecnologias sustentáveis", "Manufatura avançada"],
+      previous_projects: ["Indústria 4.0", "Economia Circular na Indústria"]
     }
   ]
 };
