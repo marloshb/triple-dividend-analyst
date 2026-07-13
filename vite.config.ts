@@ -5,6 +5,11 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Base path for GitHub Pages deployment.
+  // Repo: https://github.com/marloshb/triple-dividend-analyst
+  // In production the app is served from /triple-dividend-analyst/.
+  // In dev/preview inside Lovable it must stay "/".
+  base: mode === "production" ? "/triple-dividend-analyst/" : "/",
   server: {
     host: "::",
     port: 8080,
